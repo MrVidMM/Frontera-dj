@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.9/sweetalert2.css" integrity="sha512-kUA+6aUE6xhYbRqzqHsWMnoc/rgcfAoqMh8dCYHTVUYHlLYlhFoNYm1qP08JTY69gN0LiwbtlYCT2bQ1mbqB4Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="body-stock">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+              <img src="img/general/logo-FronteraPet.png" alt="" width="100">
+          </a>
+          <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavId">
+              <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                      <a class="nav-link" href="index.html">Home <span class="visually-hidden">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="stock.html">
+                          Suscripción
+                      </a>
+                  </li>    
+                  <li class="nav-item">
+                      <a class="nav-link" href="stock.html">
+                          Tienda
+                      </a>
+                  </li>    
+                  <li class="nav-item">
+                      <a class="nav-link" href="carrito.html">
+                          Carrito
+                      </a>
+                  </li>    
+                  
+              </ul>
+              
+              <form class="d-flex my-2 my-lg-0">
+                  <input class="form-control me-sm-2" type="text" placeholder="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+          </div>
+        </div>
+    </nav>
+    <section>
+        <div class="container-fluid">
+            <!--Titulo-->
+            <div class="col-lg-12 col-sm-12 col-12">
+                <div class="titulo-stock d-flex">
+                    <h3>Productos</h3>
+                </div>
+            </div>
+
+            <!--col isquierda-->
+            <div class="col-lg-12 col-sm-12 col-12">
+                <div class="row">
+                    <div class="col-lg-2 col-sm-2 col-12">
+                        <!--Filtros-->
+                    <div class="filtros">
+                        <h2>Filtros:</h2>
+                        <div class="dropdown  mb-4 mt-4 d-grid">
+                            <button class="btn btn-drop btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                Ordenar
+                            </button>
+                            <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="#">Mayor Precio</a></li>
+                                <li><a class="dropdown-item" href="#">Menor Precio</a></li>
+                                <li><a class="dropdown-item" href="#">Nombre</a></li>
+                                <li><a class="dropdown-item" href="#">Marca</a></li>
+                            </ul>    
+                        </div>
+                        <div class="dropdown mb-4 mt-4 d-grid">
+                            <button class="btn btn-categoria btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categoria
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="#">Juguetes</a></li>
+                                <li><a class="dropdown-item" href="#">Ropa</a></li>
+                                <li><a class="dropdown-item" href="#">Utiles</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown mb-4 d-grid">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                Marca
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="stock_ferarix.html">Ferrarix</a></li>
+                                <li><a class="dropdown-item" href="stock_goofy.html">Goofy</a></li>
+                                <li><a class="dropdown-item" href="stock_gucci.html">Gucci</a></li>
+                                <li><a class="dropdown-item" href="stock_gemelos.html">Gemelos</a></li>
+                                <li><a class="dropdown-item" href="stock_monka.html">Monka</a></li>
+                                <li><a class="dropdown-item" href="stock_marika.html">Marika</a></li>
+                            </ul>
+                        </div>
+                        <form action="" class="mb-4" style="color: rgb(63, 10, 255);">
+                            <label for="Precio" class="form-label">Precio:</label>
+                            <div class="slidecontainer">
+                                <input type="range" min="1" max="100" value="1" class="slider" id="myRange">
+                            </div>
+                            <div class="d-grid mt-3">
+                                <a href="#" class="btn btn-success btn-block mb-3">Aceptar</a>
+                                <a href="stock.html" class="btn btn-danger btn-block">Eliminar Filtros</a>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!--Flecha Volver-->
+                    <div class="flecha-volver d-flex justify-content-center mt-4 display-5 position-fixed ">
+                        <a href="#">
+                            <i class="fa-solid fa-arrow-up-from-bracket bg-dark  p-4 rounded-circle shadow"></i>
+                        </a>
+                    </div>
+                    </div>
+                
+
+                    <!--col medio-->
+                    <div class="col-lg-10 col-sm-10 col-12">
+                        <!--Nav Interno UP-->
+                        <div class="nav-stock mb-3">
+                            <nav class="d-flex justify-content-between">
+                                <img class="img-relleno" src="img/general/logo-FronteraPet.png" width="100px" alt="">
+                                <form class="form-inline d-flex">
+                                    <input class="form-control mr-sm-2" style="width: 200px;" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                                </form>
+                                <div class="btn-group">
+                                    <a href="stock.html" class="btn btn-primary"><i class="fa-solid fa-angles-left"></i></a>
+                                    <a href="stock.html" class="btn btn-primary"><i class="fa-solid fa-angle-left"></i></a>
+                                    <a href="stock.html" class="btn btn-primary active">1</a>
+                                    <a href="stock_2.html" class="btn btn-primary">2</a>
+                                    <a href="stock_3.html" class="btn btn-primary">3</a>
+                                    <a href="stock_2.html" class="btn btn-primary"><i class="fa-solid fa-angle-right"></i></a>
+                                    <a href="stock_3.html" class="btn btn-primary"><i class="fa-solid fa-angles-right"></i></a>
+                                </div>
+                            </nav>
+                        </div>
+                        <!--Card Productos-->
+                        <div class="col-lg-12 col-sm-12 col-12">
+                            <div class="row card-stock justify-content-between">
+                                <div class="col-lg-4 col-sm-4 col-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Goofy</h4>
+                                            <p class="card-text">Hueso de Cartílago</p>
+                                            <p class="card-text">Precio: $5.000</p>
+                                            <p class="text-secondary">Cant. 4</p>
+                                        </div>
+                                        <img class="card-img-top" width="100px" src="img/stock/stock-juego-1.jpg" alt="Card image">
+                                    </div>
+                                    <div class="d-grid mt-2">
+                                        <button type="button" class="btn btn-warning btn-block mb-2">Agregar al Carrito</button>
+                                        <a href="pagar.html" class="btn btn-danger btn-block mb-2">Comprar</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Monka</h4>
+                                            <p class="card-text">Pelota para Gatos</p>
+                                            <p class="card-text">Precio: $3.690</p>
+                                            <p class="text-secondary">Cant. 14</p>
+                                        </div>
+                                        <img class="card-img-top" width="100px" src="img/stock/stock-juego-2.jpg" alt="Card image">
+                                    </div>
+                                    <div class="d-grid mt-2">
+                                        <button type="button" class="btn btn-warning btn-block mb-2">Agregar al Carrito</button>
+                                        <a href="pagar.html" class="btn btn-danger btn-block mb-2">Comprar</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Monka</h4>
+                                            <p class="card-text">Raton Falso Rojo</p>
+                                            <p class="card-text">Precio: $1.290</p>
+                                            <p class="text-secondary">Cant. 24</p>
+                                        </div>
+                                        <img class="card-img-top" width="100px" src="img/stock/stock-juego-3.jpg" alt="Card image">
+                                    </div>
+                                    <div class="d-grid mt-2">
+                                        <button type="button" class="btn btn-warning btn-block mb-2">Agregar al Carrito</button>
+                                        <a href="pagar.html" class="btn btn-danger btn-block mb-2">Comprar</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Gucci</h4>
+                                            <p class="card-text">Poleron Perrito</p>
+                                            <p class="card-text">Precio: $15.000</p>
+                                            <p class="text-secondary">Cant. 1</p>
+                                        </div>
+                                        <img class="card-img-top" width="100px" src="img/stock/stock-ropa-1.jpg" alt="Card image">
+                                    </div>
+                                    <div class="d-grid mt-2">
+                                        <button type="button" class="btn btn-warning btn-block mb-2">Agregar al Carrito</button>
+                                        <a href="pagar.html" class="btn btn-danger btn-block mb-2">Comprar</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Gucci</h4>
+                                            <p class="card-text">Polera Perrito Mamalona</p>
+                                            <p class="card-text">Precio: $25.990</p>
+                                            <p class="text-secondary">Cant. 45</p>
+                                        </div>
+                                        <img class="card-img-top" width="100px" src="img/stock/stock-ropa-2.jpg" alt="Card image">
+                                    </div>
+                                    <div class="d-grid mt-2">
+                                        <button type="button" class="btn btn-warning btn-block mb-2">Agregar al Carrito</button>
+                                        <a href="pagar.html" class="btn btn-danger btn-block mb-2">Comprar</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Ferrarix</h4>
+                                            <p class="card-text">Trasporte Mamalon</p>
+                                            <p class="card-text">Precio: $13.390</p>
+                                            <p class="text-secondary">Cant. 0</p>
+                                        </div>
+                                        <img class="card-img-top" width="100px" src="img/stock/stock-transp-1.jpg" alt="Card image">
+                                    </div>
+                                    <div class="d-grid mt-2">
+                                        <button type="button" class="btn btn-warning btn-block mb-2">Agregar al Carrito</button>
+                                        <a href="pagar.html" class="btn btn-danger btn-block mb-2">Comprar</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Ferrarix</h4>
+                                            <p class="card-text">Transportador Rebbeca</p>
+                                            <p class="card-text">Precio: $105.390</p>
+                                            <p class="text-secondary">Cant. 2</p>
+                                        </div>
+                                        <img class="card-img-top" width="100px" src="img/stock/stock-transp-2.jpg" alt="Card image">
+                                    </div>
+                                    <div class="d-grid mt-2">
+                                        <button type="button" class="btn btn-warning btn-block mb-2">Agregar al Carrito</button>
+                                        <a href="pagar.html" class="btn btn-danger btn-block mb-2">Comprar</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Ferrarix</h4>
+                                            <p class="card-text">Transportador Virgolinii</p>
+                                            <p class="card-text">Precio: $45.000</p>
+                                            <p class="text-secondary">Cant. 2</p>
+                                        </div>
+                                        <img class="card-img-top" width="100px"  src="img/stock/stock-transp-3.jpg" alt="Card image">
+                                    </div>
+                                    <div class="d-grid mt-2">
+                                        <button type="button" class="btn btn-warning btn-block mb-2">Agregar al Carrito</button>
+                                        <a href="pagar.html" class="btn btn-danger btn-block mb-2">Comprar</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Gemelos</h4>
+                                            <p class="card-text">Comedor y Aguatero</p>
+                                            <p class="card-text">Precio: $35.990</p>
+                                            <p class="text-secondary">Cant. 21</p>
+                                        </div>
+                                        <img class="card-img-top" width="100px" src="img/stock/stock-util-1.jpg" alt="Card image">
+                                    </div>
+                                    <div class="d-grid mt-2">
+                                        <button type="button" class="btn btn-warning btn-block mb-2">Agregar al Carrito</button>
+                                        <a href="pagar.html" class="btn btn-danger btn-block mb-2">Comprar</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">MariKa</h4>
+                                            <p class="card-text">Rascador de Gatos</p>
+                                            <p class="card-text">Precio: $12.490</p>
+                                            <p class="text-secondary">Cant. 42</p>
+                                        </div>
+                                        <img class="card-img-top" width="100px" src="img/stock/stock-util-2.jpg" alt="Card image">
+                                    </div>
+                                    <div class="d-grid mt-2">
+                                        <button type="button" class="btn btn-warning btn-block mb-2">Agregar al Carrito</button>
+                                        <a href="pagar.html" class="btn btn-danger btn-block mb-2">Comprar</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Gemelos</h4>
+                                            <p class="card-text">Rastrillo Industrial</p>
+                                            <p class="card-text">Precio: $1.990</p>
+                                            <p class="text-secondary">Cant. 0</p>
+                                        </div>
+                                        <img class="card-img-top" width="100px" src="img/stock/stock-util-3.jpg" alt="Card image">
+                                    </div>
+                                    <div class="d-grid mt-2">
+                                        <button type="button" class="btn btn-warning btn-block mb-2">Agregar al Carrito</button>
+                                        <a href="pagar.html" class="btn btn-danger btn-block mb-2">Comprar</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Gucci</h4>
+                                            <p class="card-text">Correa Retraible</p>
+                                            <p class="card-text">Precio: $3.990</p>
+                                            <p class="text-secondary">Cant. 1</p>
+                                        </div>
+                                        <img class="card-img-top" width="100px" src="img/stock/stock-util-4.jpg" alt="Card image">
+                                    </div>
+                                    <div class="d-grid mt-2">
+                                        <button type="button" class="btn btn-warning btn-block mb-2">Agregar al Carrito</button>
+                                        <a href="pagar.html" class="btn btn-danger btn-block mb-2">Comprar</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Gemelos</h4>
+                                            <p class="card-text">Tazón con Diamantes</p>
+                                            <p class="card-text">Precio: $161.990</p>
+                                            <p class="text-secondary">Cant. 6</p>
+                                        </div>
+                                        <img class="card-img-top" width="100px" src="img/stock/stock-util-5.jpg" alt="Card image">
+                                    </div>
+                                    <div class="d-grid mt-2">
+                                        <button type="button" class="btn btn-warning btn-block mb-2">Agregar al Carrito</button>
+                                        <a href="pagar.html" class="btn btn-danger btn-block mb-2">Comprar</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">MariKa</h4>
+                                            <p class="card-text">Rastrillo NO Industrial</p>
+                                            <p class="card-text">Precio: $4.990</p>
+                                            <p class="text-secondary">Cant. 2</p>
+                                        </div>
+                                        <img class="card-img-top" width="100px" src="img/stock/stock-util-6.jpg" alt="Card image">
+                                    </div>
+                                    <div class="d-grid mt-2">
+                                        <button type="button" class="btn btn-warning btn-block mb-2">Agregar al Carrito</button>
+                                        <a href="pagar.html" class="btn btn-danger btn-block mb-2">Comprar</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-6">
+                                    <div class="card" >
+                                        <div class="card-body">
+                                            <h4 class="card-title">MariKa</h4>
+                                            <p class="card-text">Correa y Collar</p>
+                                            <p class="card-text">Precio: $7.990</p>
+                                            <p class="text-secondary">Cant. 3</p>
+                                        </div>
+                                        <img class="card-img-top" width="100px" src="img/stock/stock-util-7.jpg" alt="Card image">
+                                    </div>
+                                    <div class="d-grid mt-2">
+                                        <button type="button" class="btn btn-warning btn-block mb-2">Agregar al Carrito</button>
+                                        <a href="pagar.html" class="btn btn-danger btn-block mb-2">Comprar</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-6">
+                                    <div class="card" >
+                                        <div class="card-body">
+                                            <h4 class="card-title">Gemelos</h4>
+                                            <p class="card-text">Correa con Zafiros</p>
+                                            <p class="card-text">Precio: $90.990</p>
+                                            <p class="text-secondary">Cant. 12</p>
+                                        </div>
+                                        <img class="card-img-top" width="100px" src="img/stock/stock-util-8.jpg" alt="Card image">
+                                    </div>
+                                    <div class="d-grid mt-2">
+                                        <button type="button" class="btn btn-warning btn-block mb-2">Agregar al Carrito</button>
+                                        <a href="pagar.html" class="btn btn-danger btn-block mb-2">Comprar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Nav Interno DOWN-->
+                        <div class="nav-stock">
+                            <nav class="d-flex justify-content-between">
+                                <img class="img-relleno" src="img/general/logo-FronteraPet.png" width="100px" alt="">
+                                <form class="form-inline d-flex mb-3">
+                                    <input class="form-control mr-sm-2" style="width: 200px;" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                                </form>
+                                <div class="btn-group mb-3">
+                                    <a href="stock.html" class="btn btn-primary"><i class="fa-solid fa-angles-left"></i></a>
+                                    <a href="stock.html" class="btn btn-primary"><i class="fa-solid fa-angle-left"></i></a>
+                                    <a href="stock.html" class="btn btn-primary active">1</a>
+                                    <a href="stock_2.html" class="btn btn-primary">2</a>
+                                    <a href="stock_3.html" class="btn btn-primary">3</a>
+                                    <a href="stock_2.html" class="btn btn-primary"><i class="fa-solid fa-angle-right"></i></a>
+                                    <a href="stock_3.html" class="btn btn-primary"><i class="fa-solid fa-angles-right"></i></a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Script -->    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="https://kit.fontawesome.com/c2e8a46cbe.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.9/sweetalert2.min.js" integrity="sha512-HR+MISLMXOfqEdeVTzt9tsj0xKbyNG+Whhl1BBCNFWERpOXNOaeXTeRilTm3uqRdNiyEFI0EKbcUKvxG82GWmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

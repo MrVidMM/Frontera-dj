@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="/img/general/patita.png" type="img/x-icon" >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+
+</head>
+<body class="bg-blue-ocean">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+              <img src="{% static 'app/img/general/logo-FronteraPet.png' %}" alt="" width="100">
+          </a>
+          <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavId">
+              <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                      <a class="nav-link" href="index.html">Home <span class="visually-hidden">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="stock.html">
+                          Suscripción
+                      </a>
+                  </li>    
+                  <li class="nav-item">
+                      <a class="nav-link" href="stock.html">
+                          Tienda
+                      </a>
+                  </li>    
+                  <li class="nav-item">
+                      <a class="nav-link" href="carrito.html">
+                          Carrito
+                      </a>
+                  </li>    
+                  
+              </ul>
+              
+              <form class="d-flex my-2 my-lg-0">
+                  <input class="form-control me-sm-2" type="text" placeholder="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+          </div>
+        </div>
+    </nav>
+    
+    <div class="carrito">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-12">
+                    <div class="banner-carrito bg-primary text-light m-4 rounded-pill shadow d-flex">
+                        <img src="{% static 'app/img/carrito/icon-carrito.png' %}" alt="" width="70" >
+                        <h2 class="m-5">Tienes <span class="badge rounded-circle bg-primary fs-3">3</span> productos en el carrito.</h2>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-12">
+                    <div class="carrito-cards d-flex">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <h4 class="card-title">Goofy</h4>
+                                <p class="card-text">Hueso de Cartílago</p>
+                                <p class="card-text">Precio: $5.000</p>
+                                <div class="btn-group" role="group" aria-label="Basic outlined button group">
+                                    <button type="button" class="btn btn-primary"><i class="fa-solid fa-angle-left"></i></button>
+                                    <button type="button" class="btn btn-primary">2</i></button>
+                                    <button type="button" class="btn btn-primary"><i class="fa-solid fa-angle-right"></i></button>
+                                    <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </div>
+                            <img class="card-img-top" src="{% static 'app/img/stock/stock-juego-1.jpg' %}" alt="Card image">
+                            
+                        </div>
+                        
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <h4 class="card-title">Gucci</h4>
+                                <p class="card-text">Poleron Perrito</p>
+                                <p class="card-text">Precio: $15.000</p>
+                                <div class="btn-group" role="group" aria-label="Basic outlined button group">
+                                    <button type="button" class="btn btn-primary"><i class="fa-solid fa-angle-left"></i></button>
+                                    <button type="button" class="btn btn-primary">1</i></button>
+                                    <button type="button" class="btn btn-primary"><i class="fa-solid fa-angle-right"></i></button>
+                                    <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </div>
+                            <img class="card-img-top" src="{% static 'app/img/stock/stock-ropa-1.jpg' %}" alt="Card image">
+                            
+                        </div>
+                        
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <h4 class="card-title">Ferrarix</h4>
+                                <p class="card-text">Transportador Virgolinii</p>
+                                <p class="card-text">Precio: $45.000</p>
+                                <div class="btn-group" role="group" aria-label="Basic outlined button group">
+                                    <button type="button" class="btn btn-primary"><i class="fa-solid fa-angle-left"></i></button>
+                                    <button type="button" class="btn btn-primary">1</i></button>
+                                    <button type="button" class="btn btn-primary"><i class="fa-solid fa-angle-right"></i></button>
+                                    <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </div>
+                            <img class="card-img-top" src="{% static 'app/img/stock/stock-transp-3.jpg"' %} alt="Card image">
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-sm-4 col-12">
+                    <div class="total-pagar">
+                        <h4 class="d-flex justify-content-between align-items-center mb-3 mt-3">
+                            <span class="text-light">Total</span>
+                            <span class="badge bg-primary rounded-pill fs-3">3</span>
+                        </h4>
+                        <ul class="list-group mb-3">
+                            <!--Primer Producto-->
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h6 class="my-0">Hueso de Cartílago x 2</h6>
+                                <small class="text-muted">Juguete</small>
+                            </div>
+                            <span class="text-muted">$10.000</span>
+                            </li>
+
+                            <!--Segundo Producto-->
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h6 class="my-0">Gucci x 1</h6>
+                                <small class="text-muted">Ropa</small>
+                            </div>
+                            <span class="text-muted">$15.000</span>
+                            </li>
+
+                            <!--Tercer Producto-->
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h6 class="my-0">Ferrarix x 1</h6>
+                                <small class="text-muted">Transporte</small>
+                            </div>
+                            <span class="text-muted">$45.000</span>
+                            </li>
+
+                            <!--Descuento-->
+                            <li class="list-group-item d-flex justify-content-between bg-light">
+                            <div class="text-success">
+                                <h6 class="my-0">Descuento Suscripción</h6>
+                            </div>
+                            <span class="text-success">−$0</span>
+                            </li>
+
+                            <!--Total-->
+                            <li class="list-group-item d-flex justify-content-between">
+                            <span>Total (CLP)</span>
+                            <strong>$65.000</strong>
+                            </li>
+                        </ul>
+                        
+                        <!--BTN Pagar--> 
+                        <form class="card p-2"> <!--Botones que no son botones, funciona? si, se ve bien? si, todo de bien entonces-->
+                            <a href="pagar.html" class="btn btn-outline-success">
+                                Pagar
+                            </a>
+                            <br>
+                            <a href="productos.html" class="btn btn-warning">
+                                Seguir Comprando
+                            </a>
+                        </form><br> <!--Br totalmente imprescindible-->
+
+                        <!--Mediso de pago-->
+                        <div class="medio-pago">
+                            <form class="card p-2">
+                                <div class="input-group d-flex justify-content-center">
+                                    <h4>Medios de Pago Disponibles:</h4>
+                                    <img src="s" width="350px" alt="">
+                                </div>
+                            </form> 
+                        </div>
+                        
+                        <button type="button" class="btn btn-danger btn-vaciar">Vaciar carrito <i class="fa-solid fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="https://kit.fontawesome.com/c2e8a46cbe.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  </body>
+</html>

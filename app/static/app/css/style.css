@@ -1,0 +1,661 @@
+/* INDEX */
+/*Modal Registro*/
+.login-wrap{
+	width:100%;
+	margin:auto;
+	max-width:525px;
+	min-height:670px;
+	position:relative;
+	background:url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
+	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
+.login-html{
+	width:100%;
+	height:100%;
+	position:absolute;
+	padding:90px 70px 50px 70px;
+	background:rgba(40,57,101,.9);
+}
+.login-html .sign-in-htm,
+.login-html .sign-up-htm{
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	position:absolute;
+	transform:rotateY(180deg);
+	backface-visibility:hidden;
+	transition:all .4s linear;
+}
+.login-html .sign-in,
+.login-html .sign-up,
+.login-form .group .check{
+	display:none;
+}
+.login-html .tab,
+.login-form .group .label,
+.login-form .group .button{
+	text-transform:uppercase;
+}
+.login-html .tab{
+	font-size:22px;
+	margin-right:15px;
+	padding-bottom:5px;
+	margin:0 15px 10px 0;
+	display:inline-block;
+	border-bottom:2px solid transparent;
+}
+.login-html .sign-in:checked + .tab,
+.login-html .sign-up:checked + .tab{
+	color:#fff;
+	border-color:#1161ee;
+}
+.login-form{
+	min-height:345px;
+	position:relative;
+	perspective:1000px;
+	transform-style:preserve-3d;
+}
+.login-form .group{
+	margin-bottom:15px;
+}
+.login-form .group .label,
+.login-form .group .input,
+.login-form .group .button{
+	width:100%;
+	color:#fff;
+	display:block;
+}
+.login-form .group .input,
+.login-form .group .button{
+	border:none;
+	padding:15px 20px;
+	border-radius:25px;
+	background:rgba(255,255,255,.1);
+}
+.login-form .group input[data-type="password"]{
+	-webkit-text-security: circle;
+	-o-text-security: circle;
+	-moz-text-security: circle;
+}
+.login-form .group .label{
+	color:#aaa;
+	font-size:12px;
+}
+.login-form .group .button{
+	background:#1161ee;
+}
+.login-form .group label .icon{
+	width:15px;
+	height:15px;
+	border-radius:2px;
+	position:relative;
+	display:inline-block;
+	background:rgba(255,255,255,.1);
+}
+.login-form .group label .icon:before,
+.login-form .group label .icon:after{
+	content:'';
+	width:10px;
+	height:2px;
+	background:#fff;
+	position:absolute;
+	transition:all .2s ease-in-out 0s;
+}
+.login-form .group label .icon:before{
+	left:3px;
+	width:5px;
+	bottom:6px;
+	transform:scale(0) rotate(0);
+}
+.login-form .group label .icon:after{
+	top:6px;
+	right:0;
+	transform:scale(0) rotate(0);
+}
+.login-form .group .check:checked + label{
+	color:#fff;
+}
+.login-form .group .check:checked + label .icon{
+	background:#1161ee;
+}
+.login-form .group .check:checked + label .icon:before{
+	transform:scale(1) rotate(45deg);
+}
+.login-form .group .check:checked + label .icon:after{
+	transform:scale(1) rotate(-45deg);
+}
+.login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm{
+	transform:rotate(0);
+}
+.login-html .sign-up:checked + .tab + .login-form .sign-up-htm{
+	transform:rotate(0);
+}
+
+.hr{
+	height:2px;
+	margin:60px 0 50px 0;
+	background:rgba(255,255,255,.2);
+}
+.foot-lnk{
+	text-align:center;
+}
+
+/*Background body*/
+.bg-blue-ocean {
+    background-attachment: fixed;
+    background-image: url(../img/vectores/vector-blue-ocean.jpg);
+    background-size: cover;
+}
+
+/* Titulo index */
+.titulo-index {
+    padding: 10%;
+    margin-bottom: 20px;
+}
+
+.img-index img {
+    width: 900px;
+    height: 500px;
+    border-radius: 50px;
+}
+
+@media (max-width: 576px) {
+    .img-index img {
+        width: 300px !important;
+        height: 180px !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .img-index img {
+        width: 700px;
+        height: 380px;
+    }
+}
+
+/* Card index*/
+.card-producto {
+    flex-direction: row;
+    
+}
+
+.card-producto .card{
+	margin: 20px;
+	text-align: center;
+}
+
+/* Media Producto */
+@media (max-width: 576px) {
+	.card-producto {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.card-producto .card {
+		text-align: center;
+		justify-content: center;
+		width: 300px;
+		border-radius: 10px;
+	}
+}
+
+/* Boton Ver Mas */
+.btn-vermas {
+	align-items: center;
+	justify-content: center;
+	background-image: url(../img/vectores/vector-blue-hexatexture.jpg);
+	background-size: cover;
+	font-family: fantasy;
+	margin: 10px 330px 20px 330px;
+	padding: 20px;
+	font-size: 40px;
+	border-radius: 100px;
+}
+
+/* Media Ver Mas*/
+@media (max-width: 576px) {
+	.btn-vermas {
+		margin-left: 45px !important;
+		margin-right: 45px !important;
+		margin-bottom: 20px !important;
+	}
+}
+
+/* STOCK */
+/*Body*/
+.body-stock{
+    background-color: rgb(131, 203, 221);
+	background-image: url(../img/vectores/vector-patita-huesos.jpg);
+    background-size: cover;
+}
+
+/*Banner*/
+.titulo-stock{
+    justify-content: center;
+    background-color: black;
+    color: white;
+	flex: content;
+	border-radius: 50px;
+    margin: 20px;
+	padding: 15px;
+}
+
+/*Flecha*/
+.flecha-volver{
+	font-size: 20px;
+	margin-left: 50px;
+}
+
+/* Card Producto*/
+.card-stock .col-sm-4 .col-lg-4 .col-6{
+	flex-basis: 25%;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.card-producto .card{
+	margin: 20px;
+	text-align: center;
+}
+
+.card-stock .card .card-img-top {
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+    border-color: black;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;    
+}
+
+/*Filtro*/
+.filtros{
+    background-color: #c7cd57;
+    border-radius: 10px;
+    margin-top: 15px;
+    padding: 10px;
+	justify-content: center;
+	margin-bottom: 85px;
+}
+
+/*Nav Stock*/
+.nav-stock {
+    background-color: #0d2033;
+    color: white;
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/*Responsive*/
+@media (max-width: 576px){
+	.nav-stock nav{
+		flex-direction: column !important;
+	}
+	.nav-stock nav .btn-drop{
+		margin-left: 0px !important;
+		margin-bottom: 15px !important;
+	}
+	.nav-stock nav .form-inline{
+		margin-left: 50px !important;
+	}
+
+	.nav-stock nav .img-relleno{
+		visibility: hidden !important;
+		margin-top: -55px !important;
+	}
+	.flecha-volver{
+		visibility: hidden !important;
+	}
+	
+}
+
+@media (max-width: 992px){
+	.nav-stock nav{
+		flex-direction: row ;
+	}
+	.nav-stock nav .btn-group{
+		margin-left: 10px;
+		margin-top: 10px;
+	}
+	.flecha-volver{
+		visibility: hidden;
+	}
+
+	.nav-stock nav .img-relleno{
+		visibility: visible;
+	}
+}
+
+/* Carrito css */
+/* Banner */
+.banner-carrito {
+	background-image: url(../img/vectores/vector-blue-iluminacion.jpg);
+	background-size: cover;
+	margin-bottom: 40px !important;
+	align-items: center;
+	justify-content: center;
+	
+}
+
+/* Sector Total */
+.total-pagar {
+	margin: 0px 30px 10px 30px;
+}
+
+.btn-vaciar {
+	flex-direction: row;
+	padding: 10px;
+	width: 100%;
+	margin-top: 10px;
+	text-indent: 5px;
+}
+
+.btn-vaciar i:hover {
+	animation: forwards;
+	animation-direction: alternate-reverse;
+
+}
+
+/* Card carrito */
+/* Sector productos en carrito */
+.carrito-cards {
+	flex-direction: column;
+	margin-bottom: 10px;
+}
+
+.carrito-cards .card{
+	flex-direction: row;
+	text-align-last: center;
+	padding: 20px;
+	border-radius: 50px;
+	margin: 10px;
+	background-image: url(../img/vectores/vector-blue-hexatexture.jpg);
+	background-size: 200%;
+	background-position-y: 400px;
+	background-position-x: 800px;
+	color: white;
+}
+
+.carrito-cards .card img {
+	width: 220px;
+	height: 220px;
+	margin-left: 250px;
+	border-radius: 50px;
+}
+
+.medio-pago .card img {
+	width: 350px;
+	height: 150px;
+}
+
+/* Media Carrito */
+@media (max-width: 576px) {
+	.banner-carrito {
+		flex-direction: column;
+		margin: 15px !important;
+		border-radius: 15px !important;
+		justify-content: center;
+		align-items: center;
+		background-position: 50%;
+		text-align: center;
+	}
+
+	.banner-carrito h2  {
+		margin: 18px !important;
+	}
+	.banner-carrito img {
+		margin-top: 30px !important;
+	}
+	.carrito-cards {
+		flex-direction: column;
+	}
+
+	.carrito-cards .card{
+		flex-direction: column;
+		align-items: center;
+		margin: 10px;
+		background-position-x: 1100px;
+		background-position-y: 0px;
+		background-size: 500% !important;
+	}
+
+	.carrito-cards .card img {
+		margin: 0px !important;
+		
+	}
+}
+
+@media (max-width: 992px) {
+	.carrito-cards .card {
+		background-position-x: 1100px;
+		background-position-y: -1px;
+		background-size: 500%;
+	}
+
+	.carrito-cards .card img {
+		margin: 0px;
+	}
+
+	.medio-pago .card img {
+		width: 210px;
+		height: 110px;
+	}
+}
+
+/* FOOTER */
+.footer-u a{
+	text-decoration: none;
+	display: inline-block;
+	color: white;
+    margin-right: 10px;
+    background-color: #0d2033;
+    text-align: center;
+	width: 45px;
+    height: 45px;
+    line-height: 45px;
+	transition: all 300ms ease;
+}
+/* Suscripcion */
+/*Titulo*/
+/*Banner*/
+.banner-pago {
+    justify-content: center;
+    background-image: url(../img/general/nav-general.jpg);
+    background-size: cover;
+    color: white;
+    flex: content;
+    border-radius: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    /*Rico borde*/
+    border: solid 3px #ddff62;
+}
+
+/*CUERPO*/
+/* Create three columns of equal width */
+.body-suscripcion{
+    background-image: url(../img/suscripcion/bg-perros-webpay_1.jpg);
+    background-size: cover;
+}
+
+.columns {
+    float: left;
+    width: 33.3%;
+    padding: 8px;
+    margin-top: 25px;
+}
+  
+/* Style the list */
+.price {
+    list-style-type: none;
+    border: 1px solid #eee;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+/* Add shadows on hover */
+.price:hover {
+    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+}
+
+/* Pricing header */
+.price .header {
+    background-color: #111;
+    color: white;
+    font-size: 25px;
+}
+
+/* List items */
+.price li {
+    border-bottom: 1px solid #eee;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Color list item */
+.price .color_1 {
+    background-color: rgb(229, 255, 133);
+    font-size: 20px;
+}
+
+.price .color_2 {
+    background-color: rgb(136, 225, 241);
+    font-size: 20px;
+}
+
+.price .color_3 {
+    background-color: rgb(241, 136, 241);
+    font-size: 20px;
+}
+
+/* The "Sign Up" button */
+.button {
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/*Responsiveee*/
+@media only screen and (min-width: 320px) {
+    .columns {
+        width: 100%;
+    }
+}
+
+@media (min-width:320px){
+    .suscrip-f{
+       margin-left: 0px;
+       margin-right: 0px;
+    }
+}  
+
+@media (max-width:720px){
+    .suscrip-f{
+        margin-left: 0px;
+        margin-right: 100px;
+    }
+}  
+
+@media (min-width:1000px){
+    .suscrip-f .columns{
+        margin-left: 300px;
+        margin-right: 300px;
+    }
+}  
+
+/*Perfil*/
+/*Pagina perfil*/
+/*Cuerpo, la tarjetita*/
+.formulario-perfil {
+	background-color: #233b53;
+	color: white;
+	padding: 30px;
+	border-radius: 20px;
+	margin: 20px 350px 20px 350px;
+}
+  
+  /*Fondo*/
+.body-perfil{
+	background-image: url(../img/perfil/bg-1.jpg);
+	background-size: cover;
+}
+
+/*RESPONSIVE*/
+@media (max-width: 576px){
+	.formulario-perfil{
+		flex-direction: column-reverse;
+		margin: 0px !important;
+	}
+}
+
+@media (max-width: 992px){
+	.formulario-perfil{
+		margin: 20px 110px 20px 110px;
+	}
+}
+/*Pagar*/
+/* Pagina Pagar*/
+/*Banner*/
+.banner-pago {
+	justify-content: center;
+	background-image: url(../img/vectores/vector-doble-green-pink.jpg);
+	background-size: cover;
+	color: white;
+	flex: content;
+	border-radius: 50px;
+	margin: 20px 100px 20px 100px;
+	padding: 15px;
+	border: solid 3px #ddff62;
+}
+  
+  /*Cuerpo*/
+.body-pago{
+	background-image: url(../img/vectores/vector-patita-huesos.jpg);
+	background-size: cover;	
+}
+
+.formulario-pago {
+	flex-direction: column;
+	background-color: #233b53;
+	color: white;
+	padding: 20px;
+	border-radius: 20px;
+	margin: 10px 300px 10px 300px;
+}
+  
+  /*RESPONSIVE*/
+@media (max-width: 576px){
+	.banner-pago {
+		margin-left: 15px !important;
+		margin-right: 15px !important;
+	}
+
+	.formulario-pago{
+		flex-direction: column;
+		align-items: center;
+		margin: 10px !important;
+		
+	}
+}
+	
+@media (max-width: 992px){
+	.banner-pago {
+		margin-left: 150px;
+		margin-right: 150px;
+	}
+
+	.formulario-pago{
+		flex-direction: column;
+		align-items: center;
+		margin: 10px 160px 10px 160px;
+		
+	}
+}
