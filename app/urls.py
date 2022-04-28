@@ -10,5 +10,5 @@ urlpatterns = [
     path('carrito/', carrito, name='carrito'),
     path('base/', base, name='base'),
     path('stock/', stock, name='stock'),
-    path('historial/', historial, name='hitorial'),
+    path('historial/', historial, name='historial'),
 ]

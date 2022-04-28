@@ -12,11 +12,19 @@
 </head>
 <body class="bg-blue-ocean">
     <header>
-        
+        <div class="header-banner">
+            <div class="col-sm-12 col-12">
+                <div class="d-flex justify-content-center bg-dark p-3 text-light anuncio">
+                    <span class="badge rounded-pill bg-primary">¡Ayudanos!</span> 
+                    <span> &nbsp; Suscribete para donar a la fundación Frontera Pet y obten un 5% de descuento</span> 
+                    <!--&nbsp; : Literal agrega un espacio en blanco-->      
+                </div>
+            </div>
+        </div>
     </header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <div class="container">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{% url 'index' %}">
                 <img src="{% static 'app/img/general/logo-FronteraPet.png' %}" alt="" width="100">
             </a>
             <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
@@ -26,21 +34,31 @@
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home <span class="visually-hidden">(current)</span></a>
+                        <a class="nav-link" href="{% url 'index' %}">Home <span class="visually-hidden">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="stock.html">
+                        <a class="nav-link" href="{% url 'suscripcion' %}">
                             Suscripción
                         </a>
                     </li>    
                     <li class="nav-item">
-                        <a class="nav-link" href="stock.html">
+                        <a class="nav-link" href="{% url 'stock' %}">
                             Tienda
                         </a>
                     </li>    
                     <li class="nav-item">
-                        <a class="nav-link" href="carrito.html">
+                        <a class="nav-link" href="{% url 'carrito' %}">
                             Carrito
+                        </a>
+                    </li>    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'historial' %}">
+                            Historial
+                        </a>
+                    </li>    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'perfil' %}">
+                            Perfil
                         </a>
                     </li>    
                 </ul>
@@ -130,7 +148,7 @@
                         <div class="col-lg-4 col-sm-4 col-12">
                             <ul class="navbar-nav text-center">
                                 <li>
-                                    <img src="img/general/logo-FronteraPet.png" alt="ParaisoPeludo" width="170px" class="img_1">
+                                    <img src="{% static 'app/img/general/logo-FronteraPet.png' %}" alt="ParaisoPeludo" width="170px" class="img_1">
                                     <hr class="w-100">
                               </li>
                               

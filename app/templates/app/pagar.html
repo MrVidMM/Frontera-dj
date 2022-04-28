@@ -1,71 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebPay</title>
-    <link rel="shortcut icon" href="img/general/patita.png" type="img/x-icon" >
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
-</head>
-<body class="bg-blue-ocean">
-    <section>
-        <div class="container-fluid">
-            <!--Titulo-->
-            <div class="col-sm-12 col-12">
-                <div class="banner-pago d-flex shadow">
-                    <h3>WebPay</h3>
-                </div>
-            </div>
-
-            <!--Cuerpo-->
-            <div class="col-sm-12 col-12">
-                <div class="formulario-pago shadow">
-                    <form action="get">
-                        <div class="mb-3 mt-2">
-                            <i class="fas fa-user"></i>
-                            <label for="name" class="form-label">Nombre y Apellido:</label>
-                            <input type="text" class="form-control" id="name" placeholder="Javier Inostroza" name="txtName">
-                        </div>
-                        <div class="mb-3 mt-2">
-                            <i class="fas fa-user"></i>
-                            <label for="rut" class="form-label">Rut:</label>
-                            <input type="text" class="form-control" id="rut" placeholder="Ingrese Rut sin Puntos ni Guion" name="txtRun">
-                        </div>
-                        <div class="mb-3 mt-2">
-                            <i class="fa-solid fa-credit-card"></i>
-                            <label for="tarjeta" class="form-label"> Numero de Tarjeta: </label>
-                            <input type="text" class="form-control" id="tarjeta" placeholder="1111 2222 3333 4444" name="txtTarjeta">
-                        </div>
-                        <div class="mb-3 mt-2">
-                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                            <label for="tarjeta" class="form-label"> Ingrese Fecha de Expiración de la Tarjeta: </label>
-                            <div class="form-list__input-inline">
-                                <input type="text" name="cc_month" placeholder="MM"  pattern="\\d*" minlength="2" maxlength="2" required="" />
-                                <input type="text" name="cc_year" placeholder="YY"  pattern="\\d*" minlength="2" maxlength="2" required="" />
-                            </div>
-                        </div>
-                        <div class="mb-3 mt-2">
-                            <i class="fa-solid fa-credit-card"></i>
-                            <label for="ccv" class="form-label">CCV:</label> <br>
-                            <input type="text" name="ccv-control" id="ccv" placeholder="***" name="txtCcv" minlength="3" maxlength="3" required="" />
-                        </div>
-                        <div class="d-grid">
-                            <a href="perfil.html" class="btn btn-success btn-block mb-2">Pagar</a></li>
-                            <a href="stock.html" class="btn btn-danger btn-block">Cancelar</a></li>
-                        </div>
-                    </form>
-                </div>
+{% extends 'app/base.html' %}
+{% load static %}
+{% block contenido %}
+<section>
+    <div class="container-fluid">
+        <!--Titulo-->
+        <div class="col-sm-12 col-12">
+            <div class="banner-pago d-flex shadow">
+                <h3>WebPay</h3>
             </div>
         </div>
-        
-    </section>
-    <!-- Script -->
-    <script src="https://kit.fontawesome.com/c2e8a46cbe.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-</body>
-</html>
+
+        <!--Cuerpo-->
+        <div class="col-sm-12 col-12">
+            <div class="formulario-pago shadow">
+                <form action="get">
+                    <div class="mb-3 mt-2">
+                        <i class="fas fa-user"></i>
+                        <label for="name" class="form-label">Nombre y Apellido:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Javier Inostroza" name="txtName">
+                    </div>
+                    <div class="mb-3 mt-2">
+                        <i class="fas fa-user"></i>
+                        <label for="rut" class="form-label">Rut:</label>
+                        <input type="text" class="form-control" id="rut" placeholder="Ingrese Rut sin Puntos ni Guion" name="txtRun">
+                    </div>
+                    <div class="mb-3 mt-2">
+                        <i class="fa-solid fa-credit-card"></i>
+                        <label for="tarjeta" class="form-label"> Numero de Tarjeta: </label>
+                        <input type="text" class="form-control" id="tarjeta" placeholder="1111 2222 3333 4444" name="txtTarjeta">
+                    </div>
+                    <div class="mb-3 mt-2">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        <label for="tarjeta" class="form-label"> Ingrese Fecha de Expiración de la Tarjeta: </label>
+                        <div class="form-list__input-inline">
+                            <input type="text" name="cc_month" placeholder="MM"  pattern="\\d*" minlength="2" maxlength="2" required="" />
+                            <input type="text" name="cc_year" placeholder="YY"  pattern="\\d*" minlength="2" maxlength="2" required="" />
+                        </div>
+                    </div>
+                    <div class="mb-3 mt-2">
+                        <i class="fa-solid fa-credit-card"></i>
+                        <label for="ccv" class="form-label">CCV:</label> <br>
+                        <input type="text" name="ccv-control" id="ccv" placeholder="***" name="txtCcv" minlength="3" maxlength="3" required="" />
+                    </div>
+                    <div class="d-grid">
+                        <a href="perfil.html" class="btn btn-success btn-block mb-2">Pagar</a></li>
+                        <a href="stock.html" class="btn btn-danger btn-block">Cancelar</a></li>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</section>
+{% endblock %}

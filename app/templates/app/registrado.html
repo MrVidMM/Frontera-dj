@@ -13,7 +13,7 @@
                         <hr class="my-2">
                         <p class="fs-5">Puedes optar por un 5% de descuento en cada compra que realices.</p>
                         <p class="lead">
-                            <a class="btn btn-primary btn-lg shadow-lg" href="suscribir.html" role="button">¡Suscribirse ahora!</a>
+                            <a class="btn btn-primary btn-lg shadow-lg" href="{% url 'suscripcion' %}" role="button">¡Suscribirse ahora!</a>
                         </p>
                 </div>
             </div>
@@ -38,13 +38,13 @@
                     </ol>
                     <div class="carousel-inner img-index" role="listbox">
                         <div class="carousel-item active">
-                            <img src="img/index/pet-1.jpg" alt="First slide">
+                            <img src="{% static 'app/img/index/pet-1.jpg' %}" alt="First slide">
                         </div>
                         <div class="carousel-item">
-                            <img src="img/index/pet-2.jpg" alt="Second slide">
+                            <img src="{% static 'app/img/index/pet-2.jpg' %}" alt="Second slide">
                         </div>
                         <div class="carousel-item">
-                            <img src="img/index/pet-3.jpg" alt="Third slide">
+                            <img src="{% static 'app/img/index/pet-3.jpg' %}" alt="Third slide">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
@@ -78,7 +78,7 @@
             <div class="col-sm-12 col-12">
                 <div class="card-producto d-flex">
                     <div class="card shadow">
-                        <img class="card-img-top" src="img/stock/stock-util-3.jpg" alt="Card image">
+                        <img class="card-img-top" src="{% static 'app/img/stock/stock-util-3.jpg' %}" alt="Card image">
                         <div class="card-body">
                           <h4 class="card-title">John Doe</h4>
                           <p class="card-text">Some example text.</p>
@@ -86,7 +86,7 @@
                         </div>
                     </div>
                     <div class="card shadow">
-                        <img class="card-img-top" src="img/stock/stock-juego-1.jpg" alt="Card image">
+                        <img class="card-img-top" src="{% static 'app/img/stock/stock-juego-1.jpg' %}" alt="Card image">
                         <div class="card-body">
                           <h4 class="card-title">John Doe</h4>
                           <p class="card-text">Some example text.</p>
@@ -94,7 +94,7 @@
                         </div>
                     </div>
                     <div class="card shadow">
-                        <img class="card-img-top" src="img/stock/stock-transp-2.jpg" alt="Card image">
+                        <img class="card-img-top" src="{% static 'app/img/stock/stock-transp-2.jpg' %}" alt="Card image">
                         <div class="card-body">
                           <h4 class="card-title">John Doe</h4>
                           <p class="card-text">Some example text.</p>
@@ -102,7 +102,7 @@
                         </div>
                     </div>
                     <div class="card shadow">
-                        <img class="card-img-top" src="img/stock/stock-util-8.jpg" alt="Card image">
+                        <img class="card-img-top" src="{% static 'app/img/stock/stock-util-8.jpg' %}" alt="Card image">
                         <div class="card-body">
                           <h4 class="card-title">John Doe</h4>
                           <p class="card-text">Some example text.</p>
