@@ -1,0 +1,20 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block contenido %}    
+<section class="py-4  osahan-main-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <table>
+                        {{ form }}
+                    </table>
+                    <input type="submit" value="Guardar" class="btn btn-success">
+                </form>
+                {{ mensaje }}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

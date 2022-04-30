@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .models import * 
+from .forms import *
 # Create your views here.
 def index(request):
     return render(request, 'app/index.html')
@@ -7,7 +9,11 @@ def registrado(request):
     return render(request, 'app/registrado.html')
 
 def stock(request):
-    return render(request, 'app/stock.html')
+    productosAll = Producto.objects.all()
+    datos = {
+        'listaProductos' : productosAll
+    }
+    return render(request, 'app/stock.html', datos)
 
 def historial(request):
     return render(request, 'app/historial.html')
@@ -26,3 +32,14 @@ def carrito(request):
 
 def base(request):
     return render(request, 'app/base.html')
+
+def agregarProducto(request):
+    datos = {'form' : ProductoForm()}
+
+    if request.method == 'POST':
+        formulario = ProductoForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            datos['mensaje'] = "Producto guardado correctamente!"
+            
+    return render(request, 'app/agregarProducto.html', datos)

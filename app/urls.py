@@ -11,4 +11,5 @@ urlpatterns = [
     path('base/', base, name='base'),
     path('stock/', stock, name='stock'),
     path('historial/', historial, name='historial'),
+    path('agregarProducto/', agregarProducto, name='agregarProducto'),
 ]
