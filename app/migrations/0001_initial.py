@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             name='TipoProducto',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('tipo', models.CharField(max_length=20)),
+                ('tipo', models.CharField(max_length=60)),
             ],
         ),
         migrations.CreateModel(
@@ -24,8 +24,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('codigo', models.IntegerField()),
-                ('nombre', models.CharField(max_length=20)),
-                ('marca', models.CharField(max_length=20)),
+                ('nombre', models.CharField(max_length=60)),
+                ('marca', models.CharField(max_length=60)),
                 ('precio', models.IntegerField()),
                 ('stock', models.IntegerField()),
                 ('tipo', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app.tipoproducto')),
