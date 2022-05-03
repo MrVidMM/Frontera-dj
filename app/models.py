@@ -14,6 +14,8 @@ class Producto(models.Model):
     precio = models.IntegerField()
     stock = models.IntegerField()
     tipo = models.ForeignKey(TipoProducto, on_delete=models.CASCADE)
+    #agregar campo de imagen: nos permite almacenar sin problema el null=True
+    imagen = models.ImageField(upload_to="productos", null=True)
 
     def __str__(self):
         return self.nombre

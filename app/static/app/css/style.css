@@ -233,7 +233,9 @@
 /*Banner*/
 .titulo-stock{
     justify-content: center;
-    background-color: black;
+    background: url(../img/vectores/vector-blue-iluminacion.jpg) rgba(0, 0, 0, 0.7);
+	background-blend-mode: darken;
+	background-size: cover;
     color: white;
 	flex: content;
 	border-radius: 50px;

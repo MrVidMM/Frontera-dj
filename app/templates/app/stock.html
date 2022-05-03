@@ -108,7 +108,13 @@
                                             <p class="text-secondary">Cant. {{ aux.stock }}</p>
                                               
                                         </div>
-                                        <img class="card-img-top" width="100px" src="{% static 'app/img/stock/stock-juego-1.jpg' %}" alt="Card image">
+                                        {% if aux.imagen %}
+                                        <img class="card-img-top" width="100px" src="{{ aux.imagen.url }}" alt="Card image">
+                                        {% else %}
+                                        <img src="{% static 'app/img/stock/stock-juego-1.jpg' %}" class="img-fluid item-img w-100 mb-3">
+                                        {% endif %}
+
+                                        
                                     </div>
                                     <div class="d-grid mt-2">
                                         <button type="button" class="btn btn-warning btn-block mb-2">Agregar al Carrito</button>
