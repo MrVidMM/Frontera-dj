@@ -16,6 +16,7 @@ class Producto(models.Model):
     tipo = models.ForeignKey(TipoProducto, on_delete=models.CASCADE)
     #agregar campo de imagen: nos permite almacenar sin problema el null=True
     imagen = models.ImageField(upload_to="productos", null=True)
+    fecha_ingreso = models.DateField()
 
     def __str__(self):
         return self.nombre
