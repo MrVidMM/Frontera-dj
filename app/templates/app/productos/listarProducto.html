@@ -1,0 +1,46 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block contenido %}    
+<section class="py-4  osahan-main-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <table class="table table-condensed table-striped bg-light">
+                    <thead>
+                        <tr>
+                            <th>CODIGO</th>
+                            <th>NOMBRE</th>
+                            <th>MARCA</th>
+                            <th>PRECIO</th>
+                            <th>STOCK</th>
+                            <th>TIPO</th>
+                            <th>IMAGEN</th>
+                            <th>FECHA INGRESO</th>
+                            <th>OPCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for aux in listaProductos %}    
+                        <tr>
+                            <td scope="row">{{ aux.codigo }}</td>
+                            <td>{{ aux.nombre }}</td>
+                            <td>{{ aux.marca }}</td>
+                            <td>{{ aux.precio }}</td>
+                            <td>{{ aux.stock }}</td>
+                            <td>{{ aux.tipo }}</td>
+                            <td>{{ aux.imagen }}</td>
+                            <td>{{ aux.fecha_ingreso }}</td>
+                            <td>
+                                <a href="{% url 'modificarProducto' aux.id %}" class="btn btn-info">Modificar</a>
+                                <a href="{% url 'eliminarProducto' aux.id %}" class="btn btn-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
