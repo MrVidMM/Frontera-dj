@@ -1,6 +1,7 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import render, redirect
 from .models import * 
 from .forms import *
+
 # Create your views here.
 def index(request):
     return render(request, 'app/index.html')
@@ -44,8 +45,8 @@ def agregarProducto(request):
             
     return render(request, 'app/productos/agregarProducto.html', datos)
 
-def modificarProducto(request, id):
-    producto = Producto.objects.get(id=id)
+def modificarProducto(request, codigo):
+    producto = Producto.objects.get(codigo=codigo)
     datos = {
         'form' : ProductoForm(instance=producto)
     }
@@ -59,15 +60,17 @@ def modificarProducto(request, id):
             
     return render(request, 'app/productos/modificarProducto.html', datos)
 
-def listarProducto(request):
+    
+def listarProductos(request):
     productosAll = Producto.objects.all()
     datos = {
         'listaProductos' : productosAll
     }
-    return render(request, 'app/productos/listarProducto.html', datos)
 
-def eliminarProducto(request,id):
-    producto = Producto.objects.get(id=id)
+    return render(request, 'app/productos/listarProductos.html', datos)
+
+def eliminarProducto(request, codigo):
+    producto = Producto.objects.get(codigo=codigo)
     producto.delete()
 
-    return redirect(to='listarProductos')
+    return redirect(to="listarProductos")

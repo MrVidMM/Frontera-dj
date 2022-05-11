@@ -101,7 +101,6 @@
                                 {% for aux in listaProductos %}    
                                 {% if aux.tipo.tipo == 'Ropa' %}
                                 <div class="col-lg-4 col-sm-4 col-6">
-                                    
                                     <div class="card">
                                         <div class="card-body">
                                             <h4 class="card-title">{{ aux.marca }}</h4>
@@ -115,7 +114,7 @@
                                         {% else %}
                                         <img src="{% static 'app/img/stock/stock-juego-1.jpg' %}" class="img-fluid item-img w-100 mb-3">
                                         {% endif %}
-                                        
+
                                         
                                     </div>
                                     <div class="d-grid mt-2">
