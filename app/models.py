@@ -1,3 +1,4 @@
+from pyexpat import model
 from django.db import models
 
 # Create your models here.
@@ -27,3 +28,15 @@ class Producto(models.Model):
 
     class Meta:
         db_table = 'db_Producto'
+
+class Carrito(models.Model):
+    codigo = models.ForeignKey(Producto, on_delete=models.CASCADE)
+
+    
+    
+    class Meta:
+        db_table = 'db_Carrito'
+
+#El if accede a la variable tipo, y accedes al atributo
+#Trabajo con prog orientada a objetos
+#

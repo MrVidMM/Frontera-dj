@@ -10,58 +10,29 @@
                         <h2 class="m-5">Tienes <span class="badge rounded-circle bg-primary fs-3">3</span> productos en el carrito.</h2>
                     </div>
                 </div>
+                
+                {% for aux in listaCarrito %}
                 <div class="col-sm-8 col-12">
                     <div class="carrito-cards d-flex">
                         <div class="card shadow">
                             <div class="card-body">
-                                <h4 class="card-title">Goofy</h4>
-                                <p class="card-text">Hueso de Cartílago</p>
-                                <p class="card-text">Precio: $5.000</p>
-                                <div class="btn-group" role="group" aria-label="Basic outlined button group">
-                                    <button type="button" class="btn btn-primary"><i class="fa-solid fa-angle-left"></i></button>
-                                    <button type="button" class="btn btn-primary">2</i></button>
-                                    <button type="button" class="btn btn-primary"><i class="fa-solid fa-angle-right"></i></button>
-                                    <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-                                </div>
+                                <h4 class="card-title">{{ aux.codigo.marca}}</h4>
+                                <p class="card-text">{{ aux.codigo.nombre }}</p>
+                                <p class="card-text">Precio: ${{ aux.codigo.precio }}</p>
                             </div>
-                            <img class="card-img-top" src="{% static 'app/img/stock/stock-juego-1.jpg' %}" alt="Card image">
+                            {% if aux.codigo.imagen %}
+                                <img class="card-img-top" src="{{ aux.codigo.imagen.url }}" alt="Card image">
+                                {% else %}
+                                <img src="{% static 'app/img/stock/stock-juego-1.jpg' %}" alt="">
+                            {% endif %}
+                                
                             
-                        </div>
-                        
-                        <div class="card shadow">
-                            <div class="card-body">
-                                <h4 class="card-title">Gucci</h4>
-                                <p class="card-text">Poleron Perrito</p>
-                                <p class="card-text">Precio: $15.000</p>
-                                <div class="btn-group" role="group" aria-label="Basic outlined button group">
-                                    <button type="button" class="btn btn-primary"><i class="fa-solid fa-angle-left"></i></button>
-                                    <button type="button" class="btn btn-primary">1</i></button>
-                                    <button type="button" class="btn btn-primary"><i class="fa-solid fa-angle-right"></i></button>
-                                    <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-                                </div>
-                            </div>
-                            <img class="card-img-top" src="{% static 'app/img/stock/stock-ropa-1.jpg' %}" alt="Card image">
-                            
-                        </div>
-                        
-                        <div class="card shadow">
-                            <div class="card-body">
-                                <h4 class="card-title">Ferrarix</h4>
-                                <p class="card-text">Transportador Virgolinii</p>
-                                <p class="card-text">Precio: $45.000</p>
-                                <div class="btn-group" role="group" aria-label="Basic outlined button group">
-                                    <button type="button" class="btn btn-primary"><i class="fa-solid fa-angle-left"></i></button>
-                                    <button type="button" class="btn btn-primary">1</i></button>
-                                    <button type="button" class="btn btn-primary"><i class="fa-solid fa-angle-right"></i></button>
-                                    <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-                                </div>
-                            </div>
-                            <img class="card-img-top" src="{% static 'app/img/stock/stock-transp-3.jpg' %}" alt="Card image">
                             
                         </div>
                     </div>
                     
                 </div>
+                {% endfor %}
                 <div class="col-sm-4 col-12">
                     <div class="total-pagar">
                         <h4 class="d-flex justify-content-between align-items-center mb-3 mt-3">

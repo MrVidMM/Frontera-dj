@@ -9,18 +9,8 @@ def index(request):
 def registrado(request):
     return render(request, 'app/registrado.html')
 
-def stock(request):
-    productosAll = Producto.objects.all()
-    datos = {
-        'listaProductos' : productosAll
-    }
-    return render(request, 'app/stock.html', datos)
-
 def historial(request):
     return render(request, 'app/historial.html')
-
-def pagar(request):
-    return render(request, 'app/pagar.html')
 
 def perfil(request):
     return render(request, 'app/perfil.html')
@@ -28,12 +18,47 @@ def perfil(request):
 def suscripcion(request):
     return render(request, 'app/suscripcion.html')
 
+# CRUD CARRITO
+def stock(request):
+    productosAll = Producto.objects.all()
+    datos = {
+        'listaProductos' : productosAll
+    }
+    if request.method == 'POST':
+        tipoProducto = TipoProducto()
+        tipoProducto.tipo = request.POST.get('tipo')
+
+        producto = Producto()
+        producto.codigo = request.POST.get('codigo')
+        producto.nombre = request.POST.get('nombre')
+        producto.marca = request.POST.get('marca')
+        producto.precio = request.POST.get('precio')
+        producto.stock = request.POST.get('stock')
+        producto.tipo = tipoProducto
+        producto.imagen = request.POST.get('imagen')
+        carrito = Carrito()
+        carrito.codigo = producto
+        carrito.save()
+        
+        
+    return render(request, 'app/stock.html', datos)
+
+
 def carrito(request):
-    return render(request, 'app/carrito.html')
+    carritoAll = Carrito.objects.all()
+    datos = {
+        'listaCarrito' : carritoAll
+    }
+
+    return render(request, 'app/carrito.html', datos)
+
+def pagar(request):
+    return render(request, 'app/pagar.html')
 
 def base(request):
     return render(request, 'app/base.html')
 
+# CRUD PRODUCTOS
 def agregarProducto(request):
     datos = {'form' : ProductoForm()}
 
