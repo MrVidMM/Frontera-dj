@@ -11,6 +11,17 @@ class TipoProducto(models.Model):
     class Meta:
         db_table = 'db_tipo_Producto'
 
+class Usuario(models.Model):
+    nombre_usuario = models.CharField(max_length=30)
+    contra_usuario = models.CharField(max_length=40)
+    correo_usuario = models.CharField(max_length=60)
+
+    def __str__(self):
+        return self.nombre_usuario
+
+    class Meta:
+        db_table = 'db_usuario'
+
 class Producto(models.Model):
     codigo = models.IntegerField(null=False,primary_key=True)
     nombre = models.CharField(max_length=60)
