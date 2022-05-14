@@ -34,7 +34,7 @@
                             <td>{{ aux.created_at }}</td>
                             <td>
                                 <a href="{% url 'modificarProducto' aux.codigo %}" class="btn btn-info">Modificar</a>
-                                <a href="{% url 'eliminarProducto' aux.codigo %}" class="btn btn-danger">Eliminar</a>
+                                <a onclick="eliminar({{ aux.codigo }})" class="btn btn-danger">Eliminar</a>
                             </td>
                         </tr>
                         {% endfor %}

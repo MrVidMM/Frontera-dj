@@ -11,68 +11,54 @@
                     </div>
                 </div>
                 
-                {% for aux in listaCarrito %}
-                <div class="col-sm-8 col-12">
-                    <div class="carrito-cards d-flex">
-                        <div class="card shadow">
-                            <div class="card-body">
-                                <h4 class="card-title">{{ aux.codigo.marca}}</h4>
-                                <p class="card-text">{{ aux.codigo.nombre }}</p>
-                                <p class="card-text">Precio: ${{ aux.codigo.precio }}</p>
-                            </div>
-                            {% if aux.codigo.imagen %}
-                                <img class="card-img-top" src="{{ aux.codigo.imagen.url }}" alt="Card image">
-                                {% else %}
-                                <img src="{% static 'app/img/stock/stock-juego-1.jpg' %}" alt="">
-                            {% endif %}
+                <div class="col-lg-8 col-sm-8 col-12">
+                    {% for aux in listaCarrito %}
+                    <div class="col-lg-12 col-12">
+                        <div class="carrito-cards d-flex">
+                            <div class="card shadow">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ aux.codigo.marca}}</h4>
+                                    <p class="card-text">{{ aux.codigo.nombre }}</p>
+                                    <p class="card-text">Precio: ${{ aux.codigo.precio }}</p>
+                                </div>
+                                {% if aux.codigo.imagen %}
+                                    <img class="card-img-top" src="{{ aux.codigo.imagen.url }}" alt="Card image">
+                                    {% else %}
+                                    <img src="{% static 'app/img/stock/stock-juego-1.jpg' %}" alt="">
+                                {% endif %}
+                                    
                                 
-                            
-                            
+                                
+                            </div>
                         </div>
+                        
                     </div>
-                    
+                    {% endfor %}
                 </div>
-                {% endfor %}
-                <div class="col-sm-4 col-12">
+                
+                <div class="col-lg-4 col-sm-4 col-12">        
                     <div class="total-pagar">
                         <h4 class="d-flex justify-content-between align-items-center mb-3 mt-3">
                             <span class="text-light">Total</span>
                             <span class="badge bg-primary rounded-pill fs-3">3</span>
                         </h4>
                         <ul class="list-group mb-3">
+                            {% for aux in listaCarrito %}
                             <!--Primer Producto-->
                             <li class="list-group-item d-flex justify-content-between lh-sm">
                             <div>
-                                <h6 class="my-0">Hueso de Cartílago x 2</h6>
-                                <small class="text-muted">Juguete</small>
+                                <h6 class="my-0">{{ aux.codigo.nombre }}</h6>
+                                <small class="text-muted">{{ aux.codigo.tipo }}</small>
                             </div>
-                            <span class="text-muted">$10.000</span>
+                            <span class="text-muted">${{ aux.codigo.precio }}</span>
                             </li>
-
-                            <!--Segundo Producto-->
-                            <li class="list-group-item d-flex justify-content-between lh-sm">
-                            <div>
-                                <h6 class="my-0">Gucci x 1</h6>
-                                <small class="text-muted">Ropa</small>
-                            </div>
-                            <span class="text-muted">$15.000</span>
-                            </li>
-
-                            <!--Tercer Producto-->
-                            <li class="list-group-item d-flex justify-content-between lh-sm">
-                            <div>
-                                <h6 class="my-0">Ferrarix x 1</h6>
-                                <small class="text-muted">Transporte</small>
-                            </div>
-                            <span class="text-muted">$45.000</span>
-                            </li>
-
+                            {% endfor %}
                             <!--Descuento-->
                             <li class="list-group-item d-flex justify-content-between bg-light">
                             <div class="text-success">
                                 <h6 class="my-0">Descuento Suscripción</h6>
                             </div>
-                            <span class="text-success">−$0</span>
+                            <span class="text-success">$0</span>
                             </li>
 
                             <!--Total-->
@@ -102,8 +88,10 @@
                                 </div>
                             </form> 
                         </div>
-                        
-                        <button type="button" class="btn btn-danger btn-vaciar">Vaciar carrito <i class="fa-solid fa-trash"></i></button>
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-vaciar">Vaciar carrito <i class="fa-solid fa-trash"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>

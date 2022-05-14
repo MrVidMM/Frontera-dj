@@ -41,7 +41,7 @@ def stock(request):
         carrito.save()
         
         
-    return render(request, 'app/stock.html', datos)
+    return render(request, 'app/carrito/stock.html', datos)
 
 
 def carrito(request):
@@ -50,10 +50,20 @@ def carrito(request):
         'listaCarrito' : carritoAll
     }
 
-    return render(request, 'app/carrito.html', datos)
+    if request.method == 'POST':
+        carrito = Carrito.objects.all().delete()
+    return render(request, 'app/carrito/carrito.html', datos)
 
 def pagar(request):
-    return render(request, 'app/pagar.html')
+    carritoAll = Carrito.objects.all()
+    datos = {
+        'listaCarrito' : carritoAll
+    }
+
+    if request.method == 'POST':
+        carrito = Carrito.objects.all().delete()
+        return render(request, 'app/carrito/carrito.html')
+    return render(request, 'app/carrito/pagar.html', datos)
 
 def base(request):
     return render(request, 'app/base.html')
