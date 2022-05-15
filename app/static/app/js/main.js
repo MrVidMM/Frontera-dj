@@ -28,8 +28,33 @@ function eliminar(codigo) {
             'success'
           ).then(function() {
               window.location.href = "/eliminarProducto/" + codigo + "/";
+          }).then(function() {
+            window.location.href="/index";
           })
         
         } 
     })
+}
+
+function cerrarSesion() {
+  Swal.fire({
+      title: 'Estas seguro de salir?',
+      text: "Puedes volver cuando quieras!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, salir!'
+  }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Eliminado!',
+          'Tu producto se a eliminado.',
+          'success'
+        ).then(function() {
+            window.location.href = "/";
+        })
+      
+      } 
+  })
 }
