@@ -13,4 +13,7 @@ class ProductoForm (forms.ModelForm):
         fields = '__all__'
 
 class CustomUserCreationForm(UserCreationForm):
-    pass
+    
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name','email','password1','password2']

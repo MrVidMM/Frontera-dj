@@ -71,6 +71,12 @@ def pagar(request):
 def base(request):
     return render(request, 'app/base.html')
 
+def base_index(request):
+    return render(request, 'app/base_index.html')
+
+def base_admin(request):
+    return render(request, 'app/base_admin.html')
+
 # CRUD PRODUCTOS
 def agregarProducto(request):
     datos = {
