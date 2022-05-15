@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from .models import * 
 from .forms import *
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login as user_login
 
 # Create your views here.
 def index(request):
@@ -132,7 +132,7 @@ def registro(request):
         if formulario.is_valid():
             formulario.save()
             user = authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
-            login(request, user)
+            user_login(request, user)
             messages.success(request, "Te has registrado correctamente")
             return redirect(to="registrado")
         datos["form"] = formulario
