@@ -1,6 +1,6 @@
 {% extends 'app/base.html' %}
 {% load static %}
-
+{% load humanize %}
 {% block contenido %}
     <section>
         <div class="container-fluid">
@@ -103,9 +103,9 @@
                                 <div class="col-lg-4 col-sm-4 col-6">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h4 class="card-title">{{ aux.marca }}</h4>
-                                            <p class="card-text">{{ aux.nombre }}</p>
-                                            <p class="card-text">Precio: ${{ aux.precio }}</p>
+                                            <h4 class="card-title">{{ aux.marca | capfirst }}</h4>
+                                            <p class="card-text">{{ aux.nombre | title }}</p>
+                                            <p class="card-text">Precio: ${{ aux.precio | intcomma }}</p>
                                             <p class="text-secondary">Cant. {{ aux.stock }}</p>
                                               
                                         </div>

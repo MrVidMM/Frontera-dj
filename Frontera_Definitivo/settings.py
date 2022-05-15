@@ -27,7 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Almacen de mensajes
+MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 
+# Redireccion de Login
+LOGIN_REDIRECT_URL = '/registrado'
+LOGOUT_REDIRECT_URL = '/'
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app.apps.AppConfig',
     'colorfield',
+    'django.contrib.humanize',
     'crispy_forms',
     'crispy_bootstrap5',
 ]
@@ -132,7 +138,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # PARA UTILIZAR LAS IMAGENES
 import os
 
-MEDIA_URL = '/media/' #cuando las imagenes ya estan guardadas
+MEDIA_URL = '/media/' #Ruta donde estan guardadas las imagenes
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #cuando vamos a guardar
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"

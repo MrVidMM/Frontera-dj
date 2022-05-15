@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-{% load static %}
+    {% load static %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,32 +37,18 @@
                         <a class="nav-link" href="{% url 'index' %}">Home <span class="visually-hidden">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'suscripcion' %}">
-                            Suscripción
+                        <a class="nav-link" href="{% url 'login' %}">
+                            <span type="button">Iniciar Sesión</span>
                         </a>
                     </li>    
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'stock' %}">
-                            Tienda
+                        <a class="nav-link" href="{% url 'registro' %}">
+                            <span type="button">Crear Cuenta</span>
                         </a>
                     </li>    
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'carrito' %}">
-                            Carrito
-                        </a>
-                    </li>    
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'historial' %}">
-                            Historial
-                        </a>
-                    </li>    
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'perfil' %}">
-                            Perfil
-                        </a>
-                    </li>    
+                    
+                    </div>
                 </ul>
-                
                 <form class="d-flex my-2 my-lg-0">
                     <input class="form-control me-sm-2" type="text" placeholder="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -72,10 +58,12 @@
     </nav>
 
     
-    {% block contenido %}
-            
-    {% endblock%}
-
+    
+    {% block index %}
+        
+    {% endblock %}
+        
+    <!-- Footer -->
     <footer class="footer-u bg-dark">
         <div class="container-fluid">
             <div class="row">
@@ -175,5 +163,17 @@
         integrity="sha512-40/Lc5CTd+76RzYwpttkBAJU68jKKQy4mnPI52KKOHwRBsGcvQct9cIqpWT/XGLSsQFAcuty1fIuNgqRoZTiGQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="{% static 'app/js/main.js' %}"></script>
+
+    {% if messages %}
+        {% for m in messages %}
+            <script>
+                Swal.fire({
+                    "title":"Felicitaciones",
+                    "text": "{{ m }}",
+                    "icon":"success"
+                })
+            </script>
+        {% endfor %}
+    {% endif %}
 </body>
 </html>

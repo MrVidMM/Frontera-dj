@@ -1,6 +1,9 @@
+from pyexpat.errors import messages
 from django.shortcuts import render, redirect
 from .models import * 
 from .forms import *
+from django.contrib import messages
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
 def index(request):
@@ -70,7 +73,9 @@ def base(request):
 
 # CRUD PRODUCTOS
 def agregarProducto(request):
-    datos = {'form' : ProductoForm()}
+    datos = {
+        'form' : ProductoForm()
+    }
 
     if request.method == 'POST':
         formulario = ProductoForm(request.POST, files=request.FILES)
@@ -109,3 +114,24 @@ def eliminarProducto(request, codigo):
     producto.delete()
 
     return redirect(to="listarProductos")
+
+# CRUD DE USER
+def registro(request):
+    datos = {
+        'form': CustomUserCreationForm()
+    }
+
+    if request.method == 'POST':
+        formulario = CustomUserCreationForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            user = authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
+            login(request, user)
+            messages.success(request, "Te has registrado correctamente")
+            return redirect(to="registrado")
+        datos["form"] = formulario
+    return render(request, 'registration/registro.html', datos)
+
+def login(request):
+    messages.success(request, "Has iniciado correctamente")
+    return render(request, 'registration/login.html')

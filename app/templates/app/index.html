@@ -37,82 +37,16 @@
                         <a class="nav-link" href="{% url 'index' %}">Home <span class="visually-hidden">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span type="button" data-bs-toggle="modal" data-bs-target="#myModal">Iniciar Sesión</span>
+                        <a class="nav-link" href="{% url 'login' %}">
+                            <span type="button">Iniciar Sesión</span>
                         </a>
                     </li>    
-                    <!-- The Modal -->
-                    <div class="modal" id="myModal">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="login-wrap">
-                                    <div class="login-html">
-                                        <input id="tab-1" type="radio" name="tab" class="sign-in" checked>
-                                        <label for="tab-1" class="tab">Iniciar Sesión</label>
-                                        <input id="tab-2" type="radio" name="tab" class="sign-up">
-                                        <label for="tab-2" class="tab">Registrarse</label>
-                                        <div class="login-form">
-                                            <!--<form action="" method="POST"> 
-                                                {% csrf_token %} -->
-                                                <div class="sign-in-htm">
-                                                    <div class="group">
-                                                        <label for="user" class="label">Usuario</label>
-                                                        <input id="user" type="text" class="input">
-                                                </div>
-                                                <div class="group">
-                                                    <label for="pass" class="label">Contraseña</label>
-                                                    <input id="pass" type="password" class="input" data-type="password">
-                                                </div>
-                                                <div class="group">
-                                                    <input id="check" type="checkbox" class="check" checked>
-                                                    <label for="check"><span class="icon"></span> Mantener sesion iniciada</label>
-                                                </div>
-                                                <!--Boton Iniciar Sesion-->
-                                                <div class="group">
-                                                    <a href="{% url 'registrado' %}">
-                                                        <input type="button" class="button" value="Iniciar Sesion">
-                                                    </a>
-                                                </div>
-                                            <!--</form>-->
-                                            <div class="hr"></div>
-                                            <div class="foot-lnk">
-                                                <!--Pag Para recuperar Cuenta-->
-                                                <a href="#forgot">Olvidó su Contraseña?</a>
-                                            </div>
-                                        </div>
-                                        <div class="sign-up-htm">
-                                            <form action="" method="POST">
-                                                {% csrf_token %}
-                                                <div class="group">
-                                                    <label for="user" class="label">Usuario</label>
-                                                    <input id="user" type="text" class="input">
-                                                </div>
-                                                <div class="group">
-                                                    <label for="pass" class="label">Contraseña</label>
-                                                    <input id="pass" type="password" class="input" data-type="password">
-                                                </div>
-                                                <div class="group">
-                                                    <label for="pass" class="label">Repetir Contraseña</label>
-                                                    <input id="pass" type="password" class="input" data-type="password">
-                                                </div>
-                                                <div class="group">
-                                                    <label for="pass" class="label">Correo Electronico</label>
-                                                    <input id="pass" type="text" class="input">
-                                                </div>
-                
-                                                <!--Boton Crear Cuenta-->
-                                                <div class="group">
-                                                    <a href="{% url 'registrado' %}">
-                                                        <input type="submit" class="button" value="Crear Cuenta">
-                                                    </a>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'registro' %}">
+                            <span type="button">Crear Cuenta</span>
+                        </a>
+                    </li>    
+                    
                     </div>
                 </ul>
                 <form class="d-flex my-2 my-lg-0">
