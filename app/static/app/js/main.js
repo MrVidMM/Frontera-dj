@@ -29,7 +29,7 @@ function eliminar(codigo) {
           ).then(function() {
               window.location.href = "/eliminarProducto/" + codigo + "/";
           }).then(function() {
-            window.location.href="/index";
+            window.location.href="/listarProductos";
           })
         
         } 
