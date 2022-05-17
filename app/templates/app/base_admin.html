@@ -46,6 +46,13 @@
                             Lista de Productos
                         </a>
                     </li>    
+                    {% if perms.app.add_producto %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'admin' %}">
+                            Editar usuarios
+                        </a>
+                    </li>    
+                    {% endif %}
                 </ul>
                 
                 <form class="d-flex my-2 my-lg-0">

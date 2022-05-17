@@ -77,6 +77,9 @@ def base_index(request):
 def base_admin(request):
     return render(request, 'app/base_admin.html')
 
+def admin(request):
+    return render(request, 'app/admin/auth/user/')
+
 # CRUD PRODUCTOS
 def agregarProducto(request):
     datos = {
