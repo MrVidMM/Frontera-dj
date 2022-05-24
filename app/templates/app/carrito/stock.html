@@ -1,6 +1,12 @@
 {% extends 'app/base.html' %}
 {% load static %}
 {% load humanize %}
+
+{% block alerta %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.9/sweetalert2.css" integrity="sha512-kUA+6aUE6xhYbRqzqHsWMnoc/rgcfAoqMh8dCYHTVUYHlLYlhFoNYm1qP08JTY69gN0LiwbtlYCT2bQ1mbqB4Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock alerta %}
+
 {% block contenido %}
     <section>
         <div class="container-fluid">
@@ -114,7 +120,6 @@
                                         {% else %}
                                         <img src="{% static 'app/img/stock/stock-juego-1.jpg' %}" class="img-fluid item-img w-100 mb-3">
                                         {% endif %}
-
                                         
                                     </div>
                                     <div class="d-grid mt-2 ">
@@ -132,11 +137,25 @@
                                             </div>
                                         </form>
                                         
+                                        
                                         <a href="{% url 'pagar' %}" class="btn btn-danger btn-block mb-2">Comprar</a>
                                     </div>
                                 </div>
                                 
-                                {% endfor %}   
+                                {% endfor %} 
+                                {% if messages %}
+                                    {% for msj in messages %}
+                                        <script>
+                                            Swal.fire({
+                                                title: 'Agregado al carrito!',
+                                                text: '{{ msj }}',
+                                                icon: 'success',
+                                                showConfirmButton: false,
+                                                timer: 2000
+                                            });
+                                        </script>
+                                    {% endfor %}
+                                {% endif %}  
                             </div>
                         </div>
                         <!--Nav Interno DOWN-->

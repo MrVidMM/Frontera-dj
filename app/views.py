@@ -42,6 +42,7 @@ def stock(request):
         carrito = Carrito()
         carrito.codigo = producto
         carrito.save()
+        messages.success(request,'Producto guardado correctamente!')
         
         
     return render(request, 'app/carrito/stock.html', datos)
@@ -90,7 +91,7 @@ def agregarProducto(request):
         formulario = ProductoForm(request.POST, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
-            datos['mensaje'] = "Producto guardado correctamente!"
+            messages.success(request,'Producto guardado correctamente!') #Nuevo 2
             
     return render(request, 'app/productos/agregarProducto.html', datos)
 
@@ -104,7 +105,7 @@ def modificarProducto(request, codigo):
         formulario = ProductoForm(request.POST, files=request.FILES, instance=producto)
         if formulario.is_valid():
             formulario.save()
-            datos['mensaje'] = "Producto modificado correctamente!"
+            messages.success(request,'Producto guardado correctamente!') #Nuevo 2
             datos['form'] = formulario
             
     return render(request, 'app/productos/modificarProducto.html', datos)
@@ -115,6 +116,7 @@ def listarProductos(request):
     datos = {
         'listaProductos' : productosAll
     }
+    
 
     return render(request, 'app/productos/listarProductos.html', datos)
 

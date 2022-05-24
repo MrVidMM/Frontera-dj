@@ -1,6 +1,12 @@
 {% extends 'app/base_admin.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
+
+{% block alerta %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.9/sweetalert2.css" integrity="sha512-kUA+6aUE6xhYbRqzqHsWMnoc/rgcfAoqMh8dCYHTVUYHlLYlhFoNYm1qP08JTY69gN0LiwbtlYCT2bQ1mbqB4Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock alerta %}
+
 {% block contenido %}    
 <div class="container-fluid">
     <div class="row">
@@ -26,7 +32,21 @@
                                     <input type="submit" value="Guardar" class="btn btn-success">
                                 </div>
                             </form>
-                            {{ mensaje }}
+
+                            <!--Nuevo sistema para recivir mensajes-->
+                            {% if messages %}
+                                {% for msj in messages %}
+                                    <script>
+                                        Swal.fire({
+                                            title: 'Guardado!',
+                                            text: '{{ msj }}',
+                                            icon: 'success',
+                                            showConfirmButton: false,
+                                            timer: 2000
+                                        });
+                                    </script>
+                                {% endfor %}
+                            {% endif %}
                         </div>
                     </div>
                 </div>

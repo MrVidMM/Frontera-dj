@@ -143,3 +143,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #cuando vamos a guardar
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+# Paga Guardar mensajes
+MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage" #Nuevo 1
