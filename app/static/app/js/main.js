@@ -13,18 +13,19 @@ function confirmDelete(codigo) {
 
 function eliminar(codigo) {
     Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: '¿Estas Seguro?',
+        text: "¡Este cambio no se puede revertir!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: '¡Si, eliminar!',
+        cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.isConfirmed) {
           Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
+            '¡Eliminado!',
+            'El producto se ha eliminado.',
             'success'
           ).then(function() {
               window.location.href = "/eliminarProducto/" + codigo + "/";

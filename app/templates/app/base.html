@@ -52,9 +52,7 @@
                         </a>
                     </li>    
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'carrito' %}">
-                            Carrito
-                        </a>
+                        
                     </li>    
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'historial' %}">
@@ -75,8 +73,16 @@
                     </li> 
                     {% endif %}   
                 </ul>
+                <div>
+                    <div class="circle-carrito">1</div>
+                    <a class="icon-carrito" href="{% url 'carrito' %}">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </div>
+                
                 
                 <form class="d-flex my-2 my-lg-0">
+                    
                     <input class="form-control me-sm-2" type="text" placeholder="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>

@@ -369,8 +369,8 @@
 .carrito-cards .card{
 	flex-direction: row;
 	text-align-last: center;
-	padding: 20px;
-	border-radius: 50px;
+	padding: 5px;
+	border-radius: 15px;
 	margin: 10px;
 	background-image: url(../img/vectores/vector-blue-hexatexture.jpg);
 	background-size: 200%;
@@ -380,10 +380,11 @@
 }
 
 .carrito-cards .card img {
-	width: 220px;
-	height: 220px;
+	width: 150px;
+	height: 150px;
 	margin-left: 250px;
-	border-radius: 50px;
+	border-radius: 25px;
+	padding: 10px;
 }
 
 .medio-pago .card img {
@@ -660,4 +661,24 @@
 		margin: 10px 160px 10px 160px;
 		
 	}
+}
+
+.icon-carrito i {
+	font-size: 18px;
+	background-color: rgb(77, 77, 77);
+	margin-right: 20px;
+	padding: 15px;
+	border-radius: 50%;
+	text-decoration: none;	
+}
+
+.circle-carrito {
+	background-color: red;
+	padding: 3px 8px 3px 8px;
+	border-radius: 75%;
+	font-size: 10px;
+	position: absolute;
+	color: white;
+	margin-bottom: 50px;
+	margin-left: 38px;
 }
