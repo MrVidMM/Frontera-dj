@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'crispy_forms',
     'crispy_bootstrap5',
+    'rest_framework',
 ]
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
@@ -88,8 +89,15 @@ WSGI_APPLICATION = 'Frontera_Definitivo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'db_api_app',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': '',
+        'OPTIONS' : {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
     }
 }
 
