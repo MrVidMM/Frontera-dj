@@ -4,24 +4,31 @@ from .models import *
 from .forms import *
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as user_login
+from django.contrib.auth.decorators import login_required, permission_required
 
 # Create your views here.
+@login_required
 def index(request):
     return render(request, 'app/index.html')
 
+@login_required
 def registrado(request):
     return render(request, 'app/registrado.html')
 
+@login_required
 def historial(request):
     return render(request, 'app/historial.html')
 
+@login_required
 def perfil(request):
     return render(request, 'app/perfil.html')
 
+@login_required
 def suscripcion(request):
     return render(request, 'app/suscripcion.html')
 
 # CRUD CARRITO
+@login_required
 def stock(request):
     productosAll = Producto.objects.all()
     datos = {
@@ -47,7 +54,7 @@ def stock(request):
         
     return render(request, 'app/carrito/stock.html', datos)
 
-
+@login_required
 def carrito(request):
     carritoAll = Carrito.objects.all()
     datos = {
@@ -58,6 +65,7 @@ def carrito(request):
         carrito = Carrito.objects.all().delete()
     return render(request, 'app/carrito/carrito.html', datos)
 
+@login_required
 def pagar(request):
     carritoAll = Carrito.objects.all()
     datos = {
@@ -78,10 +86,12 @@ def base_index(request):
 def base_admin(request):
     return render(request, 'app/base_admin.html')
 
+
 def admin(request):
     return render(request, 'app/admin/auth/user/')
 
 # CRUD PRODUCTOS
+@permission_required('app.add_producto')
 def agregarProducto(request):
     datos = {
         'form' : ProductoForm()
@@ -110,7 +120,7 @@ def modificarProducto(request, codigo):
             
     return render(request, 'app/productos/modificarProducto.html', datos)
 
-    
+@permission_required('app.view_producto')
 def listarProductos(request):
     productosAll = Producto.objects.all()
     datos = {
