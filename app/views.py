@@ -7,7 +7,6 @@ from django.contrib.auth import authenticate, login as user_login
 from django.contrib.auth.decorators import login_required, permission_required
 
 # Create your views here.
-@login_required
 def index(request):
     return render(request, 'app/index.html')
 
@@ -105,6 +104,7 @@ def agregarProducto(request):
             
     return render(request, 'app/productos/agregarProducto.html', datos)
 
+@permission_required('app.update_producto')
 def modificarProducto(request, codigo):
     producto = Producto.objects.get(codigo=codigo)
     datos = {
@@ -127,9 +127,9 @@ def listarProductos(request):
         'listaProductos' : productosAll
     }
     
-
     return render(request, 'app/productos/listarProductos.html', datos)
 
+@permission_required('app.delete_producto')
 def eliminarProducto(request, codigo):
     producto = Producto.objects.get(codigo=codigo)
     producto.delete()
