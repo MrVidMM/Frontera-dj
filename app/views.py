@@ -33,13 +33,15 @@ def suscripcion(request):
 @login_required
 def stock(request):
     response = requests.get('http://127.0.0.1:8000/api/producto/').json()
-    response_digi = requests.get('https://digimon-api.vercel.app/api/digimon').json()
+    responseDigi = requests.get('https://digimon-api.vercel.app/api/digimon').json()
+    responseRM = requests.get('https://rickandmortyapi.com/api/character').json()
 
     productosAll = Producto.objects.all()
     datos = {
         'listaProductos' : productosAll,
         'listaJson' : response,
-        'listaDigi' : response_digi
+        'listaDigi' : responseDigi,
+        'listaRM' : responseRM['results']
     }
     if request.method == 'POST':
         tipoProducto = TipoProducto()
@@ -57,7 +59,6 @@ def stock(request):
         carrito.codigo = producto
         carrito.save()
         messages.success(request,'Producto guardado correctamente!')
-        
         
     return render(request, 'app/carrito/stock.html', datos)
 
