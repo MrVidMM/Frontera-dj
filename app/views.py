@@ -1,10 +1,13 @@
-from pyexpat.errors import messages
+import requests
+
 from django.shortcuts import render, redirect
-from .models import * 
-from .forms import *
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as user_login
 from django.contrib.auth.decorators import login_required, permission_required
+from pyexpat.errors import messages
+from .models import * 
+from .forms import *
+
 
 # Create your views here.
 def index(request):
@@ -29,9 +32,14 @@ def suscripcion(request):
 # CRUD CARRITO
 @login_required
 def stock(request):
+    response = requests.get('http://127.0.0.1:8000/api/producto/').json()
+    response_digi = requests.get('https://digimon-api.vercel.app/api/digimon').json()
+
     productosAll = Producto.objects.all()
     datos = {
-        'listaProductos' : productosAll
+        'listaProductos' : productosAll,
+        'listaJson' : response,
+        'listaDigi' : response_digi
     }
     if request.method == 'POST':
         tipoProducto = TipoProducto()
@@ -56,8 +64,10 @@ def stock(request):
 @login_required
 def carrito(request):
     carritoAll = Carrito.objects.all()
+    contador = Carrito.objects.count()
     datos = {
-        'listaCarrito' : carritoAll
+        'listaCarrito' : carritoAll,
+        'contador' : contador
     }
 
     if request.method == 'POST':
