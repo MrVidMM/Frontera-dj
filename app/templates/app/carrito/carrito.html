@@ -91,6 +91,7 @@
                         <form action="" method="POST">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-danger btn-vaciar">Vaciar carrito <i class="fa-solid fa-trash"></i></button>
+                            <a href="{% url 'carrito' %}"></a>
                         </form>
                     </div>
                 </div>

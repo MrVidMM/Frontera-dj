@@ -104,7 +104,7 @@
                         <div class="col-lg-12 col-sm-12 col-12">
                             <div class="row card-stock justify-content-start">
                                 
-                                {% for aux in listaProductos %}    
+                                {% for aux in listaProductos %}
                                 <!-- Seccion 1 -->
                                 <div class="col-lg-4 col-sm-4 col-6">
                                     <div class="card">
@@ -143,119 +143,6 @@
                                 </div>
                                 {% endfor %} 
 
-                                {% for aux in listaJson %}
-                                <!-- Seccion 2 -->
-                                <div class="col-lg-4 col-sm-4 col-6">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h4 class="card-title">{{ aux.marca | capfirst }}</h4>
-                                            <p class="card-text">{{ aux.nombre | title }}</p>
-                                            <p class="card-text">Precio: ${{ aux.precio | intcomma }}</p>
-                                            <p class="text-secondary">Cant. {{ aux.stock }}</p>
-                                              
-                                        </div>
-                                        {% if aux.imagen %}
-                                        <img class="card-img-top" width="100px" src="{{ aux.imagen }}" alt="Card image">
-                                        {% else %}
-                                        <img src="{% static 'app/img/stock/stock-juego-1.jpg' %}" class="img-fluid item-img w-100 mb-3">
-                                        {% endif %}
-                                        
-                                    </div>
-                                    <div class="d-grid mt-2 ">
-                                        <form action="" method="POST">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="codigo" id="codigo" value="{{ aux.codigo }}">
-                                            <input type="hidden" name="nombre" id="nombre" value="{{ aux.nombre }}">
-                                            <input type="hidden" name="marca" id="marca" value="{{ aux.marca }}">
-                                            <input type="hidden" name="precio" id="precio" value="{{ aux.precio }}">
-                                            <input type="hidden" name="stock" id="stock" value="{{ aux.stock }}">
-                                            <input type="hidden" name="tipo" id="tipo" value="{{ aux.tipo }}">
-                                            <input type="hidden" name="imagen" id="imagen" value="{{ aux.imagen }}">
-                                            <div class="d-grid">
-                                                <button type="submit" class="btn btn-warning btn-block mb-2">Agregar al Carrito</button>
-                                            </div>
-                                        </form>
-                                        
-                                        
-                                        <a href="{% url 'pagar' %}" class="btn btn-danger btn-block mb-2">Comprar</a>
-                                    </div>
-                                </div>
-                                {% endfor %} 
-
-                                {% for aux in listaDigi %}
-                                <!-- Seccion 3 -->
-                                <div class="col-lg-4 col-sm-4 col-6">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h4 class="card-title">{{ aux.name | capfirst }}</h4>
-                                            <p class="text-secondary">Nivel. {{ aux.level }}</p>             
-                                        </div>
-                                        {% if aux.img %}
-                                        <img class="card-img-top" width="100px" src="{{ aux.img }}" alt="Card image">
-                                        {% else %}
-                                        <img src="{% static 'app/img/stock/stock-juego-1.jpg' %}" class="img-fluid item-img w-100 mb-3">
-                                        {% endif %}
-                                        
-                                    </div>
-                                    <div class="d-grid mt-2 ">
-                                        <form action="" method="POST">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="codigo" id="codigo" value="{{ aux.codigo }}">
-                                            <input type="hidden" name="nombre" id="nombre" value="{{ aux.nombre }}">
-                                            <input type="hidden" name="marca" id="marca" value="{{ aux.marca }}">
-                                            <input type="hidden" name="precio" id="precio" value="{{ aux.precio }}">
-                                            <input type="hidden" name="stock" id="stock" value="{{ aux.stock }}">
-                                            <input type="hidden" name="tipo" id="tipo" value="{{ aux.tipo }}">
-                                            <input type="hidden" name="imagen" id="imagen" value="{{ aux.imagen }}">
-                                            <div class="d-grid">
-                                                <button type="submit" class="btn btn-warning btn-block mb-2">Agregar al Carrito</button>
-                                            </div>
-                                        </form>
-                                        
-                                        
-                                        <a href="{% url 'pagar' %}" class="btn btn-danger btn-block mb-2">Comprar</a>
-                                    </div>
-                                </div>
-                                {% endfor %} 
-
-                                {% for aux in listaRM %}
-                                <!-- Seccion 4 -->
-                                <div class="col-lg-4 col-sm-4 col-6">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h4 class="card-title">{{ aux.name | capfirst }}</h4>
-                                            <p class="card-text">{{ aux.species | title }}</p>
-                                            <p class="card-text">Estado: {{ aux.status  }}</p>
-                                              
-                                        </div>
-                                        {% if aux.image %}
-                                        <img class="card-img-top" width="100px" src="{{ aux.image }}" alt="Card image">
-                                        {% else %}
-                                        <img src="{% static 'app/img/stock/stock-juego-1.jpg' %}" class="img-fluid item-img w-100 mb-3">
-                                        {% endif %}
-                                        
-                                    </div>
-                                    <div class="d-grid mt-2 ">
-                                        <form action="" method="POST">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="codigo" id="codigo" value="{{ aux.codigo }}">
-                                            <input type="hidden" name="nombre" id="nombre" value="{{ aux.nombre }}">
-                                            <input type="hidden" name="marca" id="marca" value="{{ aux.marca }}">
-                                            <input type="hidden" name="precio" id="precio" value="{{ aux.precio }}">
-                                            <input type="hidden" name="stock" id="stock" value="{{ aux.stock }}">
-                                            <input type="hidden" name="tipo" id="tipo" value="{{ aux.tipo }}">
-                                            <input type="hidden" name="imagen" id="imagen" value="{{ aux.imagen }}">
-                                            <div class="d-grid">
-                                                <button type="submit" class="btn btn-warning btn-block mb-2">Agregar al Carrito</button>
-                                            </div>
-                                        </form>
-                                        
-                                        
-                                        <a href="{% url 'pagar' %}" class="btn btn-danger btn-block mb-2">Comprar</a>
-                                    </div>
-                                </div>
-                                {% endfor %}
-                                 
                                 {% if messages %}
                                     {% for msj in messages %}
                                         <script>

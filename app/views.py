@@ -4,7 +4,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as user_login
 from django.contrib.auth.decorators import login_required, permission_required
-from pyexpat.errors import messages
 from .models import * 
 from .forms import *
 
@@ -39,9 +38,10 @@ def stock(request):
     productosAll = Producto.objects.all()
     datos = {
         'listaProductos' : productosAll,
-        'listaJson' : response,
+        'listaApi' : response,
         'listaDigi' : responseDigi,
-        'listaRM' : responseRM['results']
+        'listaRM' : responseRM
+
     }
     if request.method == 'POST':
         tipoProducto = TipoProducto()
