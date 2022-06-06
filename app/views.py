@@ -1,3 +1,4 @@
+from itertools import count
 import requests
 
 from django.shortcuts import render, redirect
@@ -40,8 +41,7 @@ def stock(request):
         'listaProductos' : productosAll,
         'listaApi' : response,
         'listaDigi' : responseDigi,
-        'listaRM' : responseRM
-
+        'listaRM' : responseRM,
     }
     if request.method == 'POST':
         tipoProducto = TipoProducto()
@@ -170,7 +170,7 @@ def login(request):
     return render(request, 'registration/login.html')
 
 # Nuevas APIs
-
+@login_required
 def stockApi(request):
     response = requests.get('http://127.0.0.1:8000/api/producto/').json()
 
@@ -179,6 +179,7 @@ def stockApi(request):
     }
     return render(request, 'app/carrito/stockApi.html', datos)
 
+@login_required
 def stockGames(request):
     response = requests.get('https://www.freetogame.com/api/games').json()
 
@@ -187,6 +188,7 @@ def stockGames(request):
     }
     return render(request, 'app/carrito/stockGames.html', datos)
 
+@login_required
 def stockDigi(request):
     response = requests.get('https://digimon-api.vercel.app/api/digimon').json()
 
@@ -195,6 +197,7 @@ def stockDigi(request):
     }
     return render(request, 'app/carrito/stockDigi.html', datos)
 
+@login_required
 def stockRM(request):
     response = requests.get('https://rickandmortyapi.com/api/character').json()
 
