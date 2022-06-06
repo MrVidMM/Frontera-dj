@@ -20,4 +20,8 @@ urlpatterns = [
     path('listarProductos/', listarProductos, name='listarProductos'),
     path('registro/', registro, name='registro'),
     path('login/', login, name='login'),
+    path("stockApi/", stockApi, name='stockApi'),
+    path("stockGames/", stockGames, name='stockGames'),
+    path("stockDigi/", stockDigi, name='stockDigi'),
+    path("stockRM/", stockRM, name='stockRM'),
 ]

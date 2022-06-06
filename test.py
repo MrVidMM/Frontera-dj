@@ -1,6 +1,6 @@
 from urllib import response
 import requests
 
-response = requests.get('https://www.panshoots.cl/api/producto.php').json()
+response = requests.get('https://www.freetogame.com/api/games').json()
 
 print(response)

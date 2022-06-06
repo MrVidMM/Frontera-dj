@@ -73,6 +73,7 @@ def carrito(request):
 
     if request.method == 'POST':
         carrito = Carrito.objects.all().delete()
+        return redirect(to='carrito')
     return render(request, 'app/carrito/carrito.html', datos)
 
 @login_required
@@ -167,3 +168,37 @@ def registro(request):
 def login(request):
     messages.success(request, "Has iniciado correctamente")
     return render(request, 'registration/login.html')
+
+# Nuevas APIs
+
+def stockApi(request):
+    response = requests.get('http://127.0.0.1:8000/api/producto/').json()
+
+    datos = {
+        'listaApi' : response,
+    }
+    return render(request, 'app/carrito/stockApi.html', datos)
+
+def stockGames(request):
+    response = requests.get('https://www.freetogame.com/api/games').json()
+
+    datos = {
+        'listaGames' : response,
+    }
+    return render(request, 'app/carrito/stockGames.html', datos)
+
+def stockDigi(request):
+    response = requests.get('https://digimon-api.vercel.app/api/digimon').json()
+
+    datos = {
+        'listaDigi' : response,
+    }
+    return render(request, 'app/carrito/stockDigi.html', datos)
+
+def stockRM(request):
+    response = requests.get('https://rickandmortyapi.com/api/character').json()
+
+    datos = {
+        'listaRM' : response['results'],
+    }
+    return render(request, 'app/carrito/stockRM.html', datos)
