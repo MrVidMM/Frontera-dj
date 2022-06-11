@@ -35,6 +35,13 @@
                             <label for="name" class="form-label">Pedidos Realizados:</label>
                                 <h3>9</h3>
                         </div>
+                        {% if perms.app.view_suscripcion %}
+                        <div class="mb-3 mt-2">
+                            <i class="fas fa-user"></i>
+                            <label for="name" class="form-label">Suscripcion:</label>
+                                <p>SI</p>
+                        </div>
+                        {% endif %}
                     </form>
                     <form action="get ">
                         <div class="mb-3 mt-2 d-flex justify-content-center"><!--Si alguien ve esto, porfavor centrar imagen-->

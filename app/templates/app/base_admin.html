@@ -54,6 +54,11 @@
                             Lista de Productos
                         </a>
                     </li>    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'agregarSus' %}">
+                            Agregar Suscripción
+                        </a>
+                    </li>    
                     {% if perms.app.add_producto %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'admin' %}">

@@ -24,4 +24,6 @@ urlpatterns = [
     path("stockGames/", stockGames, name='stockGames'),
     path("stockDigi/", stockDigi, name='stockDigi'),
     path("stockRM/", stockRM, name='stockRM'),
+    path("suscripcion/", suscripcion, name='suscripcion'),
+    path("agregarSus/", agregarSuscripcion, name='agregarSus'),
 ]

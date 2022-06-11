@@ -25,17 +25,12 @@ def historial(request):
 def perfil(request):
     return render(request, 'app/perfil.html')
 
-@login_required
-def suscripcion(request):
-    return render(request, 'app/suscripcion.html')
-
 # CRUD CARRITO
 @login_required
 def stock(request):
     response = requests.get('http://127.0.0.1:8000/api/producto/').json()
     responseDigi = requests.get('https://digimon-api.vercel.app/api/digimon').json()
     responseRM = requests.get('https://rickandmortyapi.com/api/character').json()
-
     productosAll = Producto.objects.all()
     datos = {
         'listaProductos' : productosAll,
@@ -85,7 +80,7 @@ def pagar(request):
 
     if request.method == 'POST':
         carrito = Carrito.objects.all().delete()
-        return render(request, 'app/carrito/carrito.html')
+        return render(request, 'app/registrado.html')
     return render(request, 'app/carrito/pagar.html', datos)
 
 def base(request):
@@ -205,3 +200,32 @@ def stockRM(request):
         'listaRM' : response['results'],
     }
     return render(request, 'app/carrito/stockRM.html', datos)
+
+# CRUD SUSCRIPCIÓN
+#Esto esta listo, ahora que meterle el permiso para que solo los usuarios con los permisos de ver suscripcion se puedan metyer, para ello hayq ue crear un grupo de susarios en ela dmin de Django los cuales tengan todos los permisos de usuariso normales mas el de ver la suscripcion en perfil
+#pero en si esto esta listo, ya lo confirme con el profe, ahora falta hacerle el resto del crud
+@login_required
+def suscripcion(request):
+    suscripcionAll = Suscripcion.objects.all()
+    datos = {
+        'listaSuscripcion' : suscripcionAll
+    }
+    if request.method == 'POST':
+        suscripcion = Suscripcion()
+        Suscripcion.usuario = request.POST.get('usuario')
+        Suscripcion.estado = request.POST.get('estado_sus')
+        suscripcion.save()
+    return render(request, 'app/suscripcion/suscripcion.html', datos)
+
+def agregarSuscripcion(request):
+    datos = {
+        'form' : SuscripForm()
+    }
+
+    if request.method == 'POST':
+        formulario = ProductoForm(request.POST, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request,'Suscripción guardada correctamente!')
+            
+    return render(request, 'app/suscripcion/agregarSus.html', datos)

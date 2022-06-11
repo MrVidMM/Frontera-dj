@@ -12,6 +12,12 @@ class ProductoForm (forms.ModelForm):
         model = Producto
         fields = '__all__'
 
+class SuscripForm (forms.ModelForm):
+    class Meta: 
+        model = Suscripcion
+        fields = '__all__'
+
+
 class CustomUserCreationForm(UserCreationForm):
     
     class Meta:

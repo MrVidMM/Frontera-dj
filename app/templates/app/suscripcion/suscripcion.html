@@ -1,0 +1,45 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block contenido %}
+<div class="container-fluid">
+    <!--Titulo-->
+    <div class="col-sm-12 col-12">
+        <div class="banner-pago d-flex shadow">
+            <h3>Suscripción</h3>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-12">
+        <div class="row">
+            <div class="suscrip-f d-flex">
+                <div class="columns ">
+                    <ul class="price shadow">
+                        <li class="header" style="background-color:#04AA6D">Donar</li>
+                        <li class="color_1">Tú Escoges la Cantidad</li>
+                        <li class="color_2">Nos Ayudas a Crecer y a Ayudar</li>
+                        <li class="color_1">Podras Comprar Nuestros Productos</li>
+                        <li class="color_2">Recibes un 5% de descuento</li>
+                        <li class="color_1">Totalmente Opcional</li>
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="usuario_sus" id="usuario_sus" value="{{ aux.usuario }}">
+                            <input type="hidden" name="estado_sus" id="estado_sus" value="true">
+                            <div class="d-grid">
+                                <li class="color_3"><a href="{% url 'pagar' %}" class="button">Suscribirse</a></li>
+                            </div>
+                        </form>
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="usuario_sus" id="usuario_sus" value="{{ aux.usuario }}">
+                            <input type="hidden" name="estado_sus" id="estado_sus" value="false">
+                            <div class="d-grid">
+                                <li class="color_1"><a href="{% url 'index' %}" class="button bg-danger">Eliminar Suscripción</a></li>
+                            </div>
+                        </form>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

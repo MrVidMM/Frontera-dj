@@ -1,4 +1,5 @@
 from pyexpat import model
+from xmlrpc.client import boolean
 from django.db import models
 
 # Create your models here.
@@ -35,6 +36,9 @@ class Carrito(models.Model):
     class Meta:
         db_table = 'db_Carrito'
 
-#El if accede a la variable tipo, y accedes al atributo
-#Trabajo con prog orientada a objetos
-#
+class Suscripcion(models.Model):
+    usuario_sus = models.IntegerField(null=False,primary_key=True)
+    estado_sus =  models.BooleanField()#El profe comentó que esta mamada era boolean pero tambien menciono que se tenia que ocupar CHAR :v
+
+    class Meta:
+        db_table = 'db_Suscripcion'
