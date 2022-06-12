@@ -29,6 +29,10 @@ def historial(request):
 def perfil(request):
     return render(request, 'app/perfil.html')
 
+@login_required
+def seguimiento(request):
+    return render(request, 'app/seguimiento.html')
+
 # CRUD CARRITO
 @login_required
 def stock(request):

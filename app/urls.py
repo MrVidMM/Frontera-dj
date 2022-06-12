@@ -14,6 +14,7 @@ urlpatterns = [
     path('admin/auth/user/', admin, name='admin'),
     path('stock/', stock, name='stock'),
     path('historial/', historial, name='historial'),
+    path('seguimiento/', seguimiento, name='seguimiento'),
     path('agregarProducto/', agregarProducto, name='agregarProducto'),
     path('modificarProducto/<codigo>/', modificarProducto, name='modificarProducto'),
     path('eliminarProducto/<codigo>/', eliminarProducto, name='eliminarProducto'),
