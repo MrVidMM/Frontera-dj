@@ -14,6 +14,10 @@ def index(request):
     return render(request, 'app/index.html')
 
 @login_required
+def advertencia(request):
+    return render(request, 'app/advertencia.html')  
+
+@login_required
 def registrado(request):
     return render(request, 'app/registrado.html')
 

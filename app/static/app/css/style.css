@@ -682,3 +682,17 @@
 	margin-bottom: 50px;
 	margin-left: 38px;
 }
+
+/* ADVERTENCIA */
+/*BANNER*/
+.banner-gatitos{
+	justify-content: center;
+    background: url(../img/vectores/vector-blue-iluminacion.jpg) rgba(0, 0, 0, 0.7);
+	background-blend-mode: darken;
+	background-size: cover;
+    color: white;
+	flex: content;
+	border-radius: 10px;
+    margin: 5px;
+	padding: 15px;
+}

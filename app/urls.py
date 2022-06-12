@@ -26,4 +26,5 @@ urlpatterns = [
     path("stockRM/", stockRM, name='stockRM'),
     path("suscripcion/", suscripcion, name='suscripcion'),
     path("agregarSus/", agregarSuscripcion, name='agregarSus'),
+    path('advertencia/', advertencia, name='advertencia'),
 ]
