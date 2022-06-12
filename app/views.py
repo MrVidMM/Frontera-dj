@@ -55,6 +55,11 @@ def stock(request):
         carrito.save()
         messages.success(request,'Producto guardado correctamente!')
         
+        codigo = request.POST.get('codigo')
+        productoA = Producto.objects.get(codigo=codigo)
+        productoA.stock -= 1
+        productoA.save()
+
     return render(request, 'app/carrito/stock.html', datos)
 
 @login_required
