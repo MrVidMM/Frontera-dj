@@ -7,7 +7,7 @@
             <div class="col-sm-12 col-12"></div>
             <div class="p-5">
                 <h1 class="display-3 text-center">Bienvenido a tu historial de compras.</h1>
-                <p class="lead mt-5">Registro</p>
+                <p class="lead mt-5">Total de Productos: {{ contador }}</p>
                 <hr class="my-2 mt-4">
             </div>
         </div>
@@ -20,31 +20,26 @@
             <div class="col-sm-10 col-12">
                 <div class="productos-comprados ">
                     <div class="row">
-                        <div class="col-xs|sm|md|lg|xl-1-12 m-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                    <h3 class="card-title">Title</h3>
-                                    <p class="card-text">Text</p>
+                        <div class="col-lg-8 col-sm-8 col-12">
+                            {% for aux in listaHistorial %}
+                            <div class="col-lg-12 col-12">
+                                <div class="carrito-cards d-flex">
+                                    <div class="card shadow">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{ aux.id.marca}}</h4>
+                                            <p class="card-text">{{ aux.id.nombre }}</p>
+                                            <p class="card-text">Precio: ${{ aux.id.precio }}</p>
+                                        </div>
+                                        {% if aux.id.imagen %}
+                                            <img class="card-img-top" src="{{ aux.id.imagen.url }}" alt="Card image">
+                                            {% else %}
+                                            <img src="{% static 'app/img/stock/stock-juego-1.jpg' %}" alt="">
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
+                            {% endfor %}
                         </div>
-                        <div class="col-xs|sm|md|lg|xl-1-12 m-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                    <h3 class="card-title">Title</h3>
-                                    <p class="card-text">Text</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs|sm|md|lg|xl-1-12 m-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                    <h3 class="card-title">Title</h3>
-                                    <p class="card-text">Text</p>
-                                </div>
-                            </div>
-                        </div>
-                        
                     </div>
                 </div>
             </div>

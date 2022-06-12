@@ -23,7 +23,16 @@ def registrado(request):
 
 @login_required
 def historial(request):
-    return render(request, 'app/historial.html')
+    historiaAll = Historial.objects.all()
+    contador = Historial.objects.count()
+    datos = {
+        'listaHistorial' : historiaAll,
+        'contador' : contador
+    }
+    if request.method == 'POST':
+        historial = Historial.objects.all().delete()
+        return redirect(to='historial')
+    return render(request, 'app/historial.html', datos)
 
 @login_required
 def perfil(request):
@@ -83,12 +92,17 @@ def carrito(request):
 @login_required
 def pagar(request):
     carritoAll = Carrito.objects.all()
+    historiaAll = Historial.objects.all()
     datos = {
-        'listaCarrito' : carritoAll
+        'listaCarrito' : carritoAll,
+        'listaHistorial' : historiaAll
     }
 
     if request.method == 'POST':
         carrito = Carrito.objects.all().delete()
+        historial = Historial() 
+        historial.id = carrito
+        historial.save()
         return render(request, 'app/registrado.html')
     return render(request, 'app/carrito/pagar.html', datos)
 

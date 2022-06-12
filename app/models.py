@@ -32,7 +32,6 @@ class Producto(models.Model):
 
 class Carrito(models.Model):
     codigo = models.ForeignKey(Producto, on_delete=models.CASCADE)
-
     class Meta:
         db_table = 'db_Carrito'
 
@@ -42,3 +41,8 @@ class Suscripcion(models.Model):
 
     class Meta:
         db_table = 'db_Suscripcion'
+
+class Historial(models.Model):
+    id = models.ForeignKey(Carrito, on_delete=models.CASCADE)
+    class Meta:
+        db_table = "db_Historial"
