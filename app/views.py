@@ -29,9 +29,9 @@ def historial(request):
         'listaHistorial' : historiaAll,
         'contador' : contador
     }
-    if request.method == 'POST':
+    """if request.method == 'POST':
         historial = Historial.objects.all().delete()
-        return redirect(to='historial')
+        return redirect(to='historial')"""
     return render(request, 'app/historial.html', datos)
 
 @login_required
@@ -103,9 +103,10 @@ def pagar(request):
     }
 
     if request.method == 'POST':
-        carrito = Carrito.objects.all().delete()
+        carrito = Carrito()
+        carrito.codigo = request.POST.get('codigo')
         historial = Historial() 
-        historial.id = carrito
+        historial.codigo = carrito
         historial.save()
         return render(request, 'app/registrado.html')
     return render(request, 'app/carrito/pagar.html', datos)

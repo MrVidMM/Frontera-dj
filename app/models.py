@@ -43,6 +43,6 @@ class Suscripcion(models.Model):
         db_table = 'db_Suscripcion'
 
 class Historial(models.Model):
-    id = models.ForeignKey(Carrito, on_delete=models.CASCADE)
+    codigo = models.ForeignKey(Carrito, on_delete=models.CASCADE)
     class Meta:
         db_table = "db_Historial"
