@@ -44,14 +44,16 @@
                     </div>
                 </form>
                 <div class="d-grid">
-                        
+                {% for aux in listaCarrito %}
                     <form action="" method="POST">
-                        {% csrf_token %}
+                        {% csrf_token %}    
                         <div class="d-grid">
+                            <input type="hidden" name="codigo" id="codigo" value="{{ aux.codigo_id }}">
                             <button type="submit" class="btn btn-success btn-block mb-2">Pagar <i class="fa-solid fa-credit-card"></i></button>
                         </div>
                     </form>
                     <a href="{% url 'carrito' %}" class="btn btn-danger btn-block">Cancelar <i class="fa-solid fa-cancel"></i></a></li>
+                {% endfor %}
                 </div>
             </div>
         </div>  

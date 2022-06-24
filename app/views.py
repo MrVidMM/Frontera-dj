@@ -103,8 +103,8 @@ def pagar(request):
     }
 
     if request.method == 'POST':
-        carrito = Carrito()
-        carrito.codigo = request.POST.get('codigo')
+        producto = Producto.objects.get(codigo=request.POST.get('codigo'))
+        carrito = Carrito.objects.get(codigo_id=producto.codigo)
         historial = Historial() 
         historial.codigo = carrito
         historial.save()
