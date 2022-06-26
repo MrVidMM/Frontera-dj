@@ -26,12 +26,12 @@
                                 <div class="carrito-cards d-flex">
                                     <div class="card shadow">
                                         <div class="card-body">
-                                            <h4 class="card-title">{{ aux.id.marca}}</h4>
-                                            <p class="card-text">{{ aux.id.nombre }}</p>
-                                            <p class="card-text">Precio: ${{ aux.id.precio }}</p>
+                                            <h4 class="card-title">{{ aux.codigo_id.marca }}</h4>
+                                            <p class="card-text">{{ aux.codigo.nombre }}</p>
+                                            <p class="card-text">Precio: ${{ aux.precio }}</p>
                                         </div>
                                         {% if aux.id.imagen %}
-                                            <img class="card-img-top" src="{{ aux.id.imagen.url }}" alt="Card image">
+                                            <img class="card-img-top" src="{{ aux.codigo_id.imagen.url }}" alt="Card image">
                                             {% else %}
                                             <img src="{% static 'app/img/stock/stock-juego-1.jpg' %}" alt="">
                                         {% endif %}
@@ -46,8 +46,5 @@
             <div class="col-sm-1 col"></div>
         </div>
     </div>
-</section>
-<section>
-    
 </section>
 {% endblock %}
