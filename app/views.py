@@ -37,6 +37,7 @@ def historial(request):
 @login_required
 def perfil(request):
     return render(request, 'app/perfil.html')
+
 # CRUD SEGUIMIENTO
 @login_required
 def seguimiento(request):
@@ -139,9 +140,13 @@ def pagar(request):
         historial = Historial() 
         historial.codigo = carrito
         historial.save()
-        seguimiento = Seguimiento()
-        seguimiento.codigo = carrito
-        seguimiento.save()
+
+        #Necesario para vaciar carrito pero elimina el historial
+        carrito = Carrito.objects.all().delete()
+
+        #seguimiento = Seguimiento()
+        #seguimiento.codigo = carrito
+        #seguimiento.save()
         return render(request, 'app/registrado.html')
     return render(request, 'app/carrito/pagar.html', datos)
 
