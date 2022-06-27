@@ -29,18 +29,46 @@ def historial(request):
         'listaHistorial' : historiaAll,
         'contador' : contador
     }
-    """if request.method == 'POST':
+    if request.method == 'POST':
         historial = Historial.objects.all().delete()
-        return redirect(to='historial')"""
+        return redirect(to='historial')
     return render(request, 'app/historial.html', datos)
 
 @login_required
 def perfil(request):
     return render(request, 'app/perfil.html')
-
+# CRUD SEGUIMIENTO
 @login_required
 def seguimiento(request):
-    return render(request, 'app/seguimiento.html')
+    seguimientoAll = Seguimiento.objects.all()
+    datos = {
+        'listaSeguimiento' : seguimientoAll
+    }
+    return render(request, 'app/seguimiento/seguimiento.html', datos)
+
+@login_required
+def listaSeguimiento(request):
+    seguimientoAll = Seguimiento.objects.all()
+    datos = {
+        'listaSeguimiento' : seguimientoAll
+    }
+    return render(request, 'app/seguimiento/listaSeguimiento.html', datos)
+
+@login_required
+def modificarSegimiento(request):
+    seguimientoAll = EstadoSeguimiento.objects.get(codigo=codigo)
+    datos = {
+        'form' : SeguimientoForm(instance=seguimientoAll)
+    }
+
+    if request.method == 'POST':
+        formulario = SeguimientoForm(request.POST, files=request.FILES, instance=seguimientoAll)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request,'Producto guardado correctamente!') #Nuevo 2
+            datos['form'] = formulario
+            
+    return render(request, 'app/seguimiento/modificarSegimiento.html', datos)
 
 # CRUD CARRITO
 @login_required
@@ -97,17 +125,23 @@ def carrito(request):
 def pagar(request):
     carritoAll = Carrito.objects.all()
     historiaAll = Historial.objects.all()
+    seguimientoAll = Seguimiento.objects.all()
     datos = {
         'listaCarrito' : carritoAll,
-        'listaHistorial' : historiaAll
+        'listaHistorial' : historiaAll,
+        'listaSeguimiento' : seguimientoAll
     }
 
     if request.method == 'POST':
         producto = Producto.objects.get(codigo=request.POST.get('codigo'))
         carrito = Carrito.objects.get(codigo_id=producto.codigo)
+        #seguimiento = Seguimiento.objects.get(codigo_id=producto.codigo)
         historial = Historial() 
         historial.codigo = carrito
         historial.save()
+        seguimiento = Seguimiento()
+        seguimiento.codigo = carrito
+        seguimiento.save()
         return render(request, 'app/registrado.html')
     return render(request, 'app/carrito/pagar.html', datos)
 

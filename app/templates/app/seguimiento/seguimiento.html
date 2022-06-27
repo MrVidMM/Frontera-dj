@@ -6,8 +6,8 @@
         <div class="row text-light">
             <div class="col-sm-12 col-12"></div>
             <div class="p-5">
-                <h1 class="display-3 text-center">Bienvenido a tu historial de compras.</h1>
-                <p class="lead mt-5">Total de Productos: {{ contador }}</p>
+                <h1 class="display-3 text-center">Bienvenido a tu seguimiento de compras.</h1>
+                <p class="lead mt-5">Seguimiento</p>
                 <hr class="my-2 mt-4">
             </div>
         </div>
@@ -21,17 +21,17 @@
                 <div class="productos-comprados ">
                     <div class="row">
                         <div class="col-lg-8 col-sm-8 col-12">
-                            {% for aux in listaHistorial %}
+                            {% for aux in listaSeguimiento %}
                             <div class="col-lg-12 col-12">
                                 <div class="carrito-cards d-flex">
                                     <div class="card shadow">
                                         <div class="card-body">
-                                            <h4 class="card-title">{{ aux.codigo_id.marca }}</h4>
-                                            <p class="card-text">{{ aux.codigo.nombre }}</p>
+                                            <h4 class="card-title">{{ aux.marca }}</h4>
+                                            <p class="card-text">{{ aux.nombre }}</p>
                                             <p class="card-text">Precio: ${{ aux.precio }}</p>
                                         </div>
-                                        {% if aux.codigo.imagen %}
-                                            <img class="card-img-top" src="{{ aux.codigo.imagen.url }}" alt="Card image">
+                                        {% if aux.imagen %}
+                                            <img class="card-img-top" src="{{ aux.imagen.url }}" alt="Card image">
                                             {% else %}
                                             <img src="{% static 'app/img/stock/stock-juego-1.jpg' %}" alt="">
                                         {% endif %}
@@ -40,21 +40,15 @@
                             </div>
                             {% endfor %}
                         </div>
+                        
                     </div>
                 </div>
             </div>
             <div class="col-sm-1 col"></div>
-
-            <div class="col-lg-4 col-sm-4 "></div>
-            <div class="col-lg-4 col-sm-4 col-12  mb-4">
-                <form action="" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-danger btn-vaciar">Vaciar Historial <i class="fa-solid fa-trash"></i></button>
-                    <a href="{% url 'historial' %}"></a>
-                </form>
-            </div>
-            <div class="col-lg-4 col-sm-4 "></div>
         </div>
     </div>
+</section>
+<section>
+    
 </section>
 {% endblock %}

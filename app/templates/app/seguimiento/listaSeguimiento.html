@@ -1,0 +1,44 @@
+{% extends 'app/base_admin.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block inicio %}
+
+{% endblock %}
+    
+{% block contenido %}    
+<section class="py-4  osahan-main-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Listado De Productos</h2>
+                        <hr>
+                        <table class="table table-condensed table-hover table-striped table-responsive-sm bg-light border">
+                            <thead>
+                                <tr>
+                                    <th>CODIGO</th>
+                                    <th>ESTADO</th>
+                                    <th>OPCIONES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for aux in listaSeguimiento %}    
+                                <tr>
+                                    <td scope="row">{{ aux.codigo }}</td>
+                                    <td>{{ aux.estado }}</td>
+                                    <td>
+                                        <a href="{% url 'modificarSegimiento' aux.codigo %}" class="btn btn-info">Modificar</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

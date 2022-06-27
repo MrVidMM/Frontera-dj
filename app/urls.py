@@ -28,4 +28,6 @@ urlpatterns = [
     path("suscripcion/", suscripcion, name='suscripcion'),
     path("agregarSus/", agregarSuscripcion, name='agregarSus'),
     path('advertencia/', advertencia, name='advertencia'),
+    path('listaSeguimiento/', listaSeguimiento, name='listaSeguimiento'),
+    path('modificarSegimiento/<codigo>/', modificarSegimiento, name='modificarSegimiento'),
 ]

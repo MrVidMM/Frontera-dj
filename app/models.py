@@ -44,5 +44,18 @@ class Suscripcion(models.Model):
 
 class Historial(models.Model):
     codigo = models.ForeignKey(Carrito, on_delete=models.CASCADE)
+
     class Meta:
         db_table = "db_Historial"
+
+class Seguimiento(models.Model):
+    codigo = models.ForeignKey(Carrito, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "db_Seguiento"
+
+class EstadoSeguimiento(models.Model):
+    codigo = models.ForeignKey(Seguimiento, on_delete=models.CASCADE)
+    estado =  models.BooleanField
+    class Meta:
+        db_table = "db_EstadoSeguimiento"
