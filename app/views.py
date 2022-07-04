@@ -142,7 +142,7 @@ def pagar(request):
         historial.save()
 
         #Necesario para vaciar carrito pero elimina el historial
-        carrito = Carrito.objects.all().delete()
+        #carrito = Carrito.objects.all().delete()
 
         #seguimiento = Seguimiento()
         #seguimiento.codigo = carrito
