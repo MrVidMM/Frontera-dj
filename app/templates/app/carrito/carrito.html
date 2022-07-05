@@ -7,7 +7,7 @@
                 <div class="col-sm-12 col-12">
                     <div class="banner-carrito bg-primary text-light m-4 rounded-pill shadow d-flex">
                         <img src="{% static 'app/img/carrito/icon-carrito.png' %}" alt="" width="70" >
-                        <h2 class="m-5">Tienes <span class="badge rounded-circle bg-primary fs-3">{{ contador }}</span> productos en el carrito.</h2>
+                        <h2 class="m-5">Tienes <span class="badge rounded-circle bg-primary fs-3">{{ contar }}</span> productos en el carrito.</h2>
                     </div>
                 </div>
                 
@@ -17,12 +17,13 @@
                         <div class="carrito-cards d-flex">
                             <div class="card shadow">
                                 <div class="card-body">
-                                    <h4 class="card-title">{{ aux.codigo.marca}}</h4>
-                                    <p class="card-text">{{ aux.codigo.nombre }}</p>
-                                    <p class="card-text">Precio: ${{ aux.codigo.precio }}</p>
+                                    <h4 class="card-title">{{ aux.producto.nombre}}</h4>
+                                    <p class="card-text">Marca: {{ aux.producto.marca }}</p>
+                                    <p class="card-text">Precio: ${{ aux.producto.precio }}</p>
+                                    <p class="card-text">Cantidad: {{ aux.cantidad }}</p>
                                 </div>
-                                {% if aux.codigo.imagen %}
-                                    <img class="card-img-top" src="{{ aux.codigo.imagen.url }}" alt="Card image">
+                                {% if aux.producto.imagen %}
+                                    <img class="card-img-top" src="{{ aux.producto.imagen.url }}" alt="Card image">
                                     {% else %}
                                     <img src="{% static 'app/img/stock/stock-juego-1.jpg' %}" alt="">
                                 {% endif %}
@@ -39,6 +40,7 @@
                             <span class="badge bg-primary rounded-pill fs-3">{{ contador }}</span>
                         </h4>
                         <ul class="list-group mb-3">
+                            {% if usuario == 1 %}
                             {% for aux in listaCarrito %}
                             <!--Primer Producto-->
                             <li class="list-group-item d-flex justify-content-between lh-sm">
@@ -54,14 +56,40 @@
                             <div class="text-success">
                                 <h6 class="my-0">Descuento Suscripción</h6>
                             </div>
-                            <span class="text-success">${{aux.descuento_sus}}</span>
+                            <span class="text-success">${{ descuento }}</span>
                             </li>
 
                             <!--Total-->
                             <li class="list-group-item d-flex justify-content-between">
                             <span>Total (CLP)</span>
-                            <strong>${{ contadorProductos }}</strong>
+                            <strong>${{ total }}</strong>
                             </li>
+
+                            {% elif usuario == 0 %}
+                            {% for aux in listaCarrito %}
+                            <!--Primer Producto-->
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h6 class="my-0">{{ aux.producto.nombre }}</h6>
+                                <small class="text-muted">{{ aux.producto.tipo }}</small>
+                            </div>
+                            <span class="text-muted">${{ aux.producto.precio }} x {{ aux.cantidad }}</span>
+                            </li>
+                            {% endfor %}
+                            <!--Descuento-->
+                            <li class="list-group-item d-flex justify-content-between bg-light">
+                            <div class="text-success">
+                                <h6 class="my-0">Descuento Suscripción</h6>
+                            </div>
+                            <span class="text-danger">{{ noSus }}</span>
+                            </li>
+
+                            <!--Total-->
+                            <li class="list-group-item d-flex justify-content-between">
+                            <span>Total (CLP)</span>
+                            <strong>${{ total }}</strong>
+                            </li>
+                            {% endif %}
                         </ul>
                         
                         <!--BTN Pagar--> 
@@ -87,7 +115,7 @@
                         <form action="" method="POST">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-danger btn-vaciar">Vaciar carrito <i class="fa-solid fa-trash"></i></button>
-                            <a href="{% url 'carrito' %}"></a>
+                            <a href="{% url 'carrito' user.id %}"></a>
                         </form>
                     </div>
                 </div>

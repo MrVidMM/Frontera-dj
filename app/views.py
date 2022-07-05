@@ -92,12 +92,18 @@ def stock(request):
     response = requests.get('http://127.0.0.1:8000/api/producto/').json()
     responseDigi = requests.get('https://digimon-api.vercel.app/api/digimon').json()
     responseRM = requests.get('https://rickandmortyapi.com/api/character').json()
+
+    cid = request.user.id
+
     productosAll = Producto.objects.all()
+    carritoAll = Carrito.objects.all()
     datos = {
         'listaProductos' : productosAll,
         'listaApi' : response,
         'listaDigi' : responseDigi,
         'listaRM' : responseRM,
+        'listaCarrito' : carritoAll,
+        'id' : cid
     }
     if request.method == 'POST':
         tipoProducto = TipoProducto()
@@ -111,30 +117,83 @@ def stock(request):
         producto.stock = request.POST.get('stock')
         producto.tipo = tipoProducto
         producto.imagen = request.POST.get('imagen')
+
         carrito = Carrito()
-        carrito.codigo = producto
-        carrito.save()
-        messages.success(request,'Producto guardado correctamente!')
+        carrito.usuario = cid
+        carrito.cantidad = 0
+        estado = True
+        
+        if Carrito.objects.filter(producto=request.POST.get('codigo')).exists():
+            for i in carritoAll:
+                if i.producto.nombre == producto.nombre:
+                    i.cantidad += 1
+                    i.save()
+                    messages.success(request,'Producto guardado correctamente!')
+                    estado = False
+        else:
+            carrito.producto = producto
+            carrito.cantidad = 1
+            carrito.save()
+            estado = False
+
+        if estado == True:
+            carrito.producto = producto
+            carrito.cantidad = 1
+            carrito.save()
         
         codigo = request.POST.get('codigo')
         productoA = Producto.objects.get(codigo=codigo)
-        productoA.stock -= 1
-        productoA.save()
+        if productoA == Producto.objects.get(codigo=codigo):
+            if productoA.stock > 0:
+                productoA.stock -= 1
+                productoA.save()
+                messages.success(request,'Producto guardado correctamente!')
+            else: 
+                producto.stock == 0
+                productoA.save()
+                messages.error(request,'No hay stock disponible!')
 
     return render(request, 'app/carrito/stock.html', datos)
 
 @login_required
-def carrito(request):
-    carritoAll = Carrito.objects.all()
+def carrito(request, id):
+    carritoAll = Carrito.objects.filter(usuario=id)
     contador = Carrito.objects.count()
+
     datos = {
         'listaCarrito' : carritoAll,
-        'contador' : contador
+        'contador' : contador,
+        'usuario' : 0
     }
+
+    datos['total'] = 0
+    datos['contar'] = 0
+
+    usuario = request.user.username
+    if Suscripcion.objects.filter(username=usuario).exists():
+        datos['usuario'] = 1
+
+        for carrito in carritoAll:
+            datos['totalsub'] = round((carrito.producto.precio * carrito.cantidad + datos['total']) * 0.95)
+            datos['total'] = carrito.producto.precio * carrito.cantidad + datos['total']
+            datos['descuento'] = round(datos['total'] * 0.05)
+    else:
+        for carrito in carritoAll:
+            datos['total'] = carrito.producto.precio * carrito.cantidad + datos['total']
+            datos['noSus'] = "¡Debes estar suscrito!"
+            datos['contar'] = carrito.cantidad
     
     if request.method == 'POST':
-        carrito = Carrito.objects.all().delete()
-        return redirect(to='carrito')
+        for i in carritoAll:
+            seguimiento = Seguimiento()
+
+            seguimiento.codigo = i.id
+            seguimiento.cantidad = i.cantidad
+            seguimiento.producto = i.producto
+            seguimiento.usuario = i.usuario
+            seguimiento.estado = "pago verificado"
+            messages.success(request,'¡Pago exitoso!')
+
     return render(request, 'app/carrito/carrito.html', datos)
 
 @login_required
