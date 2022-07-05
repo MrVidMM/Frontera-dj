@@ -60,7 +60,12 @@ class Historial(models.Model):
         db_table = "db_Historial"
 
 class Seguimiento(models.Model):
-    codigo = models.ForeignKey(Carrito, on_delete=models.CASCADE)
+    codigo = models.AutoField(null=False,primary_key=True)
+    usuario = models.IntegerField()
+    fechaCompra = models.DateField(auto_now_add=True)
+    cantidad = models.IntegerField()
+    producto = models.ForeignKey(Producto, on_delete= models.CASCADE)
+    estado = models.CharField(max_length=50)
 
     class Meta:
         db_table = "db_Seguiento"

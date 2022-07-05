@@ -18,18 +18,67 @@
                         <table class="table table-condensed table-hover table-striped table-responsive-sm bg-light border">
                             <thead>
                                 <tr>
-                                    <th>CODIGO</th>
+                                    <th>USUARIO</th>
+                                    <th>PRODUCTO</th>
+                                    <th>VALOR</th>
+                                    <th>CANTIDAD</th>
                                     <th>ESTADO</th>
+                                    <th>MODIFICAR ESTADO</th>
                                     <th>OPCIONES</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for aux in listaSeguimiento %}    
                                 <tr>
-                                    <td scope="row">{{ aux.codigo }}</td>
+                                    <td scope="row">{{ aux.usuario }}</td>
+                                    <td>{{ aux.producto.nombre }}</td>
+                                    <td>{{ aux.producto.precio }}</td>
+                                    <td>{{ aux.cantidad }}</td>
                                     <td>{{ aux.estado }}</td>
                                     <td>
-                                        <a href="{% url 'modificarSegimiento' aux.codigo %}" class="btn btn-info">Modificar</a>
+                                        <form method="POST" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="codigo_producto" id="codigo_producto" value="{{aux.codigo}}">
+                                            {% if aux.estado == "PAGO VERIFICADO" %}
+                                                <select class="browser-default" name="selecciona" id="seleccion">  
+                                                    <option value="{{ aux.estado }}" selected>{{aux.estado}}</option>
+                                                    <option value="PREPARACION">PREPARACION</option>
+                                                    <option value="REPARTO">REPARTO</option>
+                                                    <option value="ENTREGADO">ENTREGADO</option>
+                                                </select>
+                                                <input type="submit" class="btn btn-success  mt-3" value="Modificar">
+                                            {% endif %}
+                                            {% if aux.estado == "PREPARACION" %}
+                                                <select class="browser-default"  name="selecciona" id="seleccion">
+                                                    <option value="PAGO VERIFICADO">PAGO VERIFICADO</option>
+                                                    <option value="{{ aux.estado }}" selected>{{aux.estado}}</option>
+                                                    <option value="REPARTO">REPARTO</option>
+                                                    <option value="ENTREGADO">ENTREGADO</option>
+                                                </select>
+                                                <input type="submit" class="btn btn-success  mt-3" value="Modificar">  
+                                            {% endif %}
+                                            {% if aux.estado == "REPARTO" %}
+                                                <select class="browser-default"  name="selecciona" id="seleccion">
+                                                    <option value="PAGO VERIFICADO">PAGO VERIFICADO</option>
+                                                    <option value="PREPARACION">PREPARACION</option>
+                                                    <option value="{{aux.estado}}" selected>{{aux.estado}}</option>
+                                                    <option value="ENTREGADO">ENTREGADO</option>
+                                                </select>
+                                                <input type="submit" class="btn btn-success  mt-3" value="Modificar">
+                                            {% endif %}
+                                            {% if aux.estado == "ENTREGADO" %}
+                                                <select class="browser-default"  name="selecciona" id="seleccion">
+                                                    <option value="PAGO VERIFICADO">PAGO VERIFICADO</option>
+                                                    <option value="PREPARACION">PREPARACION</option>
+                                                    <option value="REPARTO">REPARTO</option>
+                                                    <option value="{{ aux.estado }}" selected>{{aux.estado}}</option>
+                                                </select>
+                                                <input type="submit" class="btn btn-success  mt-3" value="Modificar"> 
+                                            {% endif %}
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <a onclick="eliminar({{ aux.codigo }})" class="btn btn-danger">Eliminar</a>
                                     </td>
                                 </tr>
                                 {% endfor %}

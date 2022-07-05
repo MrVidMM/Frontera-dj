@@ -41,17 +41,32 @@ def perfil(request):
 # CRUD SEGUIMIENTO
 @login_required
 def seguimiento(request):
-    seguimientoAll = Seguimiento.objects.all()
-    datos = {
-        'listaSeguimiento' : seguimientoAll
-    }
+
+    datos = { }
+
+    producto = Producto()
+    producto.codigo = request.POST.get('codigo')
+    producto.nombre = request.POST.get('nombre')
+    producto.marca = request.POST.get('marca')
+    producto.precio = request.POST.get('precio')
+    producto.stock = request.POST.get('stock')
+    print(producto)
+    datos['producto']= producto
+    datos['estado'] = estado
+
     return render(request, 'app/seguimiento/seguimiento.html', datos)
 
 @login_required
 def listaSeguimiento(request):
+    if request.method == 'POST':
+        seguimiento= Seguimiento.objects.get(codigo=request.POST.get('codigo'))
+        seguimiento.estado = request.POST.get('selecciona')
+        seguimiento.save()
+
     seguimientoAll = Seguimiento.objects.all()
     datos = {
-        'listaSeguimiento' : seguimientoAll
+            'listaSeguimiento' : seguimientoAll,
+            'usuario' : 0
     }
     return render(request, 'app/seguimiento/listaSeguimiento.html', datos)
 

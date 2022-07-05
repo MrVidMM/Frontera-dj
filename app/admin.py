@@ -22,9 +22,15 @@ class CarritoAdmin(admin.ModelAdmin):
     search_fields = ['usuario']
     list_per_page = 10
 
+class SeguimientoAdmin(admin.ModelAdmin):
+    list_display=['codigo','usuario','fechaCompra','cantidad','producto','estado']
+    search_fields=['codigo']
+    list_per_page= 10
+
 admin.site.register(TipoProducto)
 admin.site.register(Producto, ProductoAdmin)
 admin.site.register(Carrito, CarritoAdmin)
 admin.site.register(Usuario, UsuarioAdmin)
 admin.site.register(Suscripcion, SuscripcionAdmin)
 admin.site.register(TipoUsuario)
+admin.site.register(Seguimiento, SeguimientoAdmin)
