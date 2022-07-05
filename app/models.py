@@ -1,5 +1,5 @@
 from pyexpat import model
-#from xmlrpc.client import boolean
+from xmlrpc.client import boolean
 from django import db
 from django.db import models
 
@@ -44,11 +44,11 @@ class Carrito(models.Model):
         db_table = 'db_Carrito'
 
 class Suscripcion(models.Model):
-    usuario_sus = models.CharField(max_length=20,primary_key=True)
-    estado_sus =  models.BooleanField(default=False)#El profe comentó que esta mamada era boolean pero tambien menciono que se tenia que ocupar CHAR :v
+    username = models.CharField(max_length=20,primary_key=True)
+    suscrito =  models.BooleanField(default=False)#El profe comentó que esta mamada era boolean pero tambien menciono que se tenia que ocupar CHAR :v
 
     def __str__(self):
-        return self.estado_sus
+        return self.suscrito
 
     class Meta:
         db_table = 'db_Suscripcion'

@@ -8,13 +8,13 @@ class ProductoAdmin(admin.ModelAdmin):
     list_per_page = 10
 
 class UsuarioAdmin(admin.ModelAdmin):
-    list_display = ['run','nombre','correo','numero','tipo','created_at','updated_at']
+    list_display = ['run','nombre','correo','numero','tipo','create_at','update_at']
     search_fields = ['run']
     list_per_page = 10
 
 class SuscripcionAdmin(admin.ModelAdmin):
-    list_display = ['usuario_sus','estado_sus']
-    search_fields = ['usuario_sus']
+    list_display = ['username','suscrito']
+    search_fields = ['username']
     list_per_page = 10
 
 class CarritoAdmin(admin.ModelAdmin):
@@ -24,4 +24,7 @@ class CarritoAdmin(admin.ModelAdmin):
 
 admin.site.register(TipoProducto)
 admin.site.register(Producto, ProductoAdmin)
-admin.site.register(Carrito)
+admin.site.register(Carrito, CarritoAdmin)
+admin.site.register(Usuario, UsuarioAdmin)
+admin.site.register(Suscripcion, SuscripcionAdmin)
+admin.site.register(TipoUsuario)

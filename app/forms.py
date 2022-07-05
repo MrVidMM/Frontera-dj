@@ -1,3 +1,4 @@
+from dataclasses import field
 from django import forms
 from django.forms import ModelForm
 from .models import *
@@ -8,17 +9,10 @@ class ProductoForm (forms.ModelForm):
     
     nombre = forms.CharField(min_length=10,max_length=20)
     precio = forms.IntegerField(min_value=400)
-    
+
     class Meta: 
         model = Producto
         fields = '__all__'
-
-class SuscripcionForm (forms.ModelForm):
-
-    class Meta: 
-        model = Suscripcion
-        fields = ['usuario_sus', 'estado_sus']
-
 
 class CustomUserCreationForm(UserCreationForm):
     
@@ -36,5 +30,10 @@ class UsuarioForm (forms.ModelForm):
 
     class Meta: 
         model = Usuario
-        fields = ['run', 'nombre' , 'correo' , 'numero' , 'tipo' , 'created_at' , 'updated_at']
+        fields = ['run','nombre','correo','numero','tipo']
 
+class SuscripcionForm (forms.ModelForm):
+
+    class Meta: 
+        model = Suscripcion
+        fields = ['username', 'suscrito']
