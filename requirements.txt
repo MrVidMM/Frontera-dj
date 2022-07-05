@@ -6,3 +6,4 @@ crispy-bootstrap5
 mysqlclient
 pymysql
 djangorestframework
+requests

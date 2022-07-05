@@ -116,7 +116,7 @@ def carrito(request):
         'listaCarrito' : carritoAll,
         'contador' : contador
     }
-
+    
     if request.method == 'POST':
         carrito = Carrito.objects.all().delete()
         return redirect(to='carrito')

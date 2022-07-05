@@ -31,13 +31,23 @@ class Producto(models.Model):
         db_table = 'db_Producto'
 
 class Carrito(models.Model):
-    codigo = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    id = models.AutoField(primary_key=True)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    cantidad = models.IntegerField(null=True)
+    usuario = models.IntegerField()
+
+    def __str__(self):
+        return self.id
+
     class Meta:
         db_table = 'db_Carrito'
 
 class Suscripcion(models.Model):
-    usuario_sus = models.IntegerField(null=False,primary_key=True)
-    estado_sus =  models.BooleanField()#El profe comentó que esta mamada era boolean pero tambien menciono que se tenia que ocupar CHAR :v
+    usuario_sus = models.CharField(max_length=20,primary_key=True)
+    estado_sus =  models.BooleanField(default=False)#El profe comentó que esta mamada era boolean pero tambien menciono que se tenia que ocupar CHAR :v
+
+    def __str__(self):
+        return self.estado_sus
 
     class Meta:
         db_table = 'db_Suscripcion'
@@ -57,5 +67,30 @@ class Seguimiento(models.Model):
 class EstadoSeguimiento(models.Model):
     codigo = models.ForeignKey(Seguimiento, on_delete=models.CASCADE)
     estado =  models.BooleanField
+
     class Meta:
         db_table = "db_EstadoSeguimiento"
+
+class TipoUsuario(models.Model):
+    tipo= models.CharField(max_length=25)
+
+    def __str__(self):
+        return self.tipo
+    
+    class Meta:
+        db_table ='db_Tipo_usuario'
+
+class Usuario(models.Model):
+    run=models.IntegerField(null=False,primary_key=True)
+    nombre=models.CharField(max_length=30)
+    correo=models.CharField(max_length=30)
+    numero=models.CharField(max_length=12)
+    tipo=models.ForeignKey(TipoUsuario, on_delete=models.CASCADE)
+    create_at = models.DateField(auto_now_add=True)
+    update_at = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.run
+
+    class Meta:
+        db_table ='db_Usuario'
