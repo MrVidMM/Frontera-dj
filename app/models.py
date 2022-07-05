@@ -1,5 +1,6 @@
 from pyexpat import model
-from xmlrpc.client import boolean
+#from xmlrpc.client import boolean
+from django import db
 from django.db import models
 
 # Create your models here.
