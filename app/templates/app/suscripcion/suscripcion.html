@@ -1,45 +1,56 @@
 {% extends 'app/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
+{% load humanize %}
 {% block contenido %}
-<div class="container-fluid">
-    <!--Titulo-->
-    <div class="col-sm-12 col-12">
-        <div class="banner-pago d-flex shadow">
-            <h3>Suscripción</h3>
-        </div>
-    </div>
-
-    <div class="col-sm-12 col-12">
-        <div class="row">
-            <div class="suscrip-f d-flex">
-                <div class="columns ">
-                    <ul class="price shadow">
-                        <li class="header" style="background-color:#04AA6D">Donar</li>
-                        <li class="color_1">Tú Escoges la Cantidad</li>
-                        <li class="color_2">Nos Ayudas a Crecer y a Ayudar</li>
-                        <li class="color_1">Podras Comprar Nuestros Productos</li>
-                        <li class="color_2">Recibes un 5% de descuento</li>
-                        <li class="color_1">Totalmente Opcional</li>
-                        <form action="" method="POST">
-                            {% csrf_token %}
-                            <input type="hidden" name="usuario_sus" id="usuario_sus" value="{{ aux.usuario }}">
-                            <input type="hidden" name="estado_sus" id="estado_sus" value="true">
-                            <div class="d-grid">
-                                <li class="color_3"><a href="{% url 'pagar' %}" class="button">Suscribirse</a></li>
-                            </div>
-                        </form>
-                        <form action="" method="POST">
-                            {% csrf_token %}
-                            <input type="hidden" name="usuario_sus" id="usuario_sus" value="{{ aux.usuario }}">
-                            <input type="hidden" name="estado_sus" id="estado_sus" value="false">
-                            <div class="d-grid">
-                                <li class="color_1"><a href="{% url 'index' %}" class="button bg-danger">Eliminar Suscripción</a></li>
-                            </div>
-                        </form>
-                    </ul>
-                </div>
+    <div class="container-fluid">
+        <!--Titulo-->
+        <div class="col-sm-12 col-12">
+            <div class="banner-pago d-flex shadow">
+                <h3>Suscripción</h3>
             </div>
         </div>
     </div>
-</div>
+    {% if usuario == 1 %}
+    <section class="py-4  osahan-main-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-condensed table-hover table-striped table-responsive-sm bg-light border">
+                                <thead>
+                                    <tr>
+                                        <th>NOMBRE</th>
+                                        <th>ESTADO SUSCRIPCIÓN</th>
+                                        <th>ELIMINAR SUSCRIPCIÓN</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for aux in listaSuscripcion %}
+                                        <tr>
+                                            <td>{{ aux.username }}</td>
+                                            <td>{{ aux.estado }}</td>
+                                            <td><a href="{% url 'eliminarSuscripcion' aux.username %}" class="btn btn-primary">Eliminar Suscripcion</a></td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                                {% elif usuario == 0 %}
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <table>
+                                        {{ form | crispy }}
+                                        <td>
+                                            <input type="submit" class="btn btn-success mt-3" name="btnEnviar" id="btnEnviar">
+                                        </td>
+                                    </table>
+                                </form>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
 {% endblock %}

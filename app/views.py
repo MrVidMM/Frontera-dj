@@ -196,6 +196,12 @@ def carrito(request, id):
 
     return render(request, 'app/carrito/carrito.html', datos)
 
+def limpiarCarrito(request):
+    carrito = Carrito.objects.all()
+    carrito.delete()
+
+    return render(request, 'app/carrito/carrito.html')
+
 @login_required
 def pagar(request):
     carritoAll = Carrito.objects.all()
@@ -349,24 +355,26 @@ def stockRM(request):
 def suscripcion(request):
     suscripcionAll = Suscripcion.objects.all()
     datos = {
-        'listaSuscripcion' : suscripcionAll
+        'listaSuscripcion' : suscripcionAll,
+        'form': SuscripcionForm(),
+        'usuario' : 0
     }
+
+    usuario= request.user.username
+
+    if Suscripcion.objects.filter(username=usuario).exists():
+        datos['usuario'] = 1
+
     if request.method == 'POST':
-        suscripcion = Suscripcion()
-        Suscripcion.usuario = request.POST.get('usuario')
-        Suscripcion.estado = request.POST.get('estado_sus')
+        suscripcion=Suscripcion()
+        suscripcion.username = request.POST.get('username')
+        suscripcion.suscrito = True
         suscripcion.save()
     return render(request, 'app/suscripcion/suscripcion.html', datos)
 
-def agregarSuscripcion(request):
-    datos = {
-        'form' : SuscripForm()
-    }
+@login_required
+def eliminarSuscripcion(request, username):
+    suscripcion=Suscripcion.objects.get(username=username)
+    suscripcion.delete()
 
-    if request.method == 'POST':
-        formulario = ProductoForm(request.POST, files=request.FILES)
-        if formulario.is_valid():
-            formulario.save()
-            messages.success(request,'Suscripción guardada correctamente!')
-            
-    return render(request, 'app/suscripcion/agregarSus.html', datos)
+    return redirect(to="suscripcion")

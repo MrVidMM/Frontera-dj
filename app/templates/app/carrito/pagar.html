@@ -52,7 +52,7 @@
                             <button type="submit" class="btn btn-success btn-block mb-2">Pagar <i class="fa-solid fa-credit-card"></i></button>
                         </div>
                     </form>
-                    <a href="{% url 'carrito' %}" class="btn btn-danger btn-block">Cancelar <i class="fa-solid fa-cancel"></i></a></li>
+                    <a href="{% url 'carrito' user.id %}" class="btn btn-danger btn-block">Cancelar <i class="fa-solid fa-cancel"></i></a></li>
                 {% endfor %}
                 </div>
             </div>

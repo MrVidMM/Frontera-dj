@@ -39,38 +39,38 @@
                                         <form method="POST" enctype="multipart/form-data">
                                             {% csrf_token %}
                                             <input type="hidden" name="codigo_producto" id="codigo_producto" value="{{aux.codigo}}">
-                                            {% if aux.estado == "PAGO VERIFICADO" %}
+                                            {% if aux.estado == "pago verificado" %}
                                                 <select class="browser-default" name="selecciona" id="seleccion">  
                                                     <option value="{{ aux.estado }}" selected>{{aux.estado}}</option>
-                                                    <option value="PREPARACION">PREPARACION</option>
-                                                    <option value="REPARTO">REPARTO</option>
-                                                    <option value="ENTREGADO">ENTREGADO</option>
+                                                    <option value="preparacion">preparacion</option>
+                                                    <option value="reparto">reparto</option>
+                                                    <option value="entregado">entregado</option>
                                                 </select>
                                                 <input type="submit" class="btn btn-success  mt-3" value="Modificar">
                                             {% endif %}
-                                            {% if aux.estado == "PREPARACION" %}
+                                            {% if aux.estado == "preparacion" %}
                                                 <select class="browser-default"  name="selecciona" id="seleccion">
-                                                    <option value="PAGO VERIFICADO">PAGO VERIFICADO</option>
+                                                    <option value="pago verificado">pago verificado</option>
                                                     <option value="{{ aux.estado }}" selected>{{aux.estado}}</option>
-                                                    <option value="REPARTO">REPARTO</option>
-                                                    <option value="ENTREGADO">ENTREGADO</option>
+                                                    <option value="reparto">reparto</option>
+                                                    <option value="entregado">entregado</option>
                                                 </select>
                                                 <input type="submit" class="btn btn-success  mt-3" value="Modificar">  
                                             {% endif %}
-                                            {% if aux.estado == "REPARTO" %}
+                                            {% if aux.estado == "reparto" %}
                                                 <select class="browser-default"  name="selecciona" id="seleccion">
-                                                    <option value="PAGO VERIFICADO">PAGO VERIFICADO</option>
-                                                    <option value="PREPARACION">PREPARACION</option>
+                                                    <option value="pago verificado">pago verificado</option>
+                                                    <option value="preparacion">preparacion</option>
                                                     <option value="{{aux.estado}}" selected>{{aux.estado}}</option>
-                                                    <option value="ENTREGADO">ENTREGADO</option>
+                                                    <option value="entregado">entregado</option>
                                                 </select>
                                                 <input type="submit" class="btn btn-success  mt-3" value="Modificar">
                                             {% endif %}
-                                            {% if aux.estado == "ENTREGADO" %}
+                                            {% if aux.estado == "entregado" %}
                                                 <select class="browser-default"  name="selecciona" id="seleccion">
-                                                    <option value="PAGO VERIFICADO">PAGO VERIFICADO</option>
-                                                    <option value="PREPARACION">PREPARACION</option>
-                                                    <option value="REPARTO">REPARTO</option>
+                                                    <option value="pago verificado">pago verificado</option>
+                                                    <option value="preparacion">preparacion</option>
+                                                    <option value="reparto">reparto</option>
                                                     <option value="{{ aux.estado }}" selected>{{aux.estado}}</option>
                                                 </select>
                                                 <input type="submit" class="btn btn-success  mt-3" value="Modificar"> 
