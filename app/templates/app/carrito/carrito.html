@@ -1,5 +1,11 @@
 {% extends 'app/base.html' %}
 {% load static %}
+
+{% block alerta %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.9/sweetalert2.css" integrity="sha512-kUA+6aUE6xhYbRqzqHsWMnoc/rgcfAoqMh8dCYHTVUYHlLYlhFoNYm1qP08JTY69gN0LiwbtlYCT2bQ1mbqB4Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock alerta %}
+
 {% block contenido %}    
     <div class="carrito">
         <div class="container-fluid">
@@ -92,12 +98,10 @@
                             </li>
                             {% endif %}
                         </ul>
-                        
                         <!--BTN Pagar--> 
-                        <form class="card p-2"> <!--Botones que no son botones, funciona? si, se ve bien? si, todo de bien entonces-->
-                            <a href="{% url 'pagar' %}" class="btn btn-outline-success">
-                                Pagar
-                            </a>
+                        <form class="card p-2" action="" method="POST"> <!--Botones que no son botones, funciona? si, se ve bien? si, todo de bien entonces-->
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-success">Pagar</button>
                             <br>
                             <a href="{% url 'stock' %}" class="btn btn-warning">
                                 Seguir Comprando
@@ -122,4 +126,30 @@
             </div>
         </div>
     </div>    
+{% endblock %}
+
+{% block sweetalert %}
+{% if mensaje == "pago verificado" %}
+    <script>
+        Swal.fire({
+        icon: 'warning',
+        title: 'Tu pago esta siendo comprobado',
+        text: 'Un momento por favor!',
+        
+        confirmButtonText: "Continuar",
+        confirmButtonColor: '#3085d6',
+        
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire(
+            'Aprobado!',
+            'Tu pago a sido recibido!',
+            'success'
+          ).then(function() {
+            window.location.href = "/stock/";
+          })
+        }
+      })
+    </script>
+    {% endif %}
 {% endblock %}

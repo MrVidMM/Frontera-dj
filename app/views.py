@@ -192,7 +192,11 @@ def carrito(request, id):
             seguimiento.producto = i.producto
             seguimiento.usuario = i.usuario
             seguimiento.estado = "pago verificado"
-            messages.success(request,'¡Pago exitoso!')
+            seguimiento.save()
+
+        carritoAll.delete()
+        datos['mensaje'] = 'pago verificado'
+        messages.success(request,'¡Pago exitoso!')
 
     return render(request, 'app/carrito/carrito.html', datos)
 
