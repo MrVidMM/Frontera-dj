@@ -1,13 +1,14 @@
 {% extends 'app/base.html' %}
 {% load static %}
 {% block contenido %}
+{% if producto %}
 <section>
     <div class="container-fluid">
         <div class="row text-light">
             <div class="col-sm-12 col-12"></div>
             <div class="p-5">
                 <h1 class="display-3 text-center">Bienvenido a tu seguimiento de compras.</h1>
-                <p class="lead mt-5">Seguimiento</p>
+                <p class="lead mt-5">Estado: {{ estado }}</p>
                 <hr class="my-2 mt-4">
             </div>
         </div>
@@ -21,34 +22,85 @@
                 <div class="productos-comprados ">
                     <div class="row">
                         <div class="col-lg-8 col-sm-8 col-12">
-                            {% for aux in listaSeguimiento %}
                             <div class="col-lg-12 col-12">
                                 <div class="carrito-cards d-flex">
                                     <div class="card shadow">
                                         <div class="card-body">
-                                            <h4 class="card-title">{{ aux.marca }}</h4>
-                                            <p class="card-text">{{ aux.nombre }}</p>
-                                            <p class="card-text">Precio: ${{ aux.precio }}</p>
+                                            {% if estado == "pago verificado" %}
+                                            <div class="row">
+                                            <div class="col-sm-4">Preparacion</div>
+                                            <div class="col-sm-4">Reparto</div>
+                                            <div class="col-sm-4">Entregado</div>
+                                            </div>
+                                            <div class="progress">
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: 5%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            {% endif %}
+                                            {% if estado == "preparacion" %}
+                                            <div class="row">
+                                            <div class="col-sm-4">Preparacion</div>
+                                            <div class="col-sm-4">Reparto</div>
+                                            <div class="col-sm-4">Entregado</div>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" role="progressbar" style="width: 25%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            {% endif %}
+                                            {% if estado == "reparto" %}
+                                            <div class="row">
+                                            <div class="col-sm-4">Preparacion</div>
+                                            <div class="col-sm-4">Reparto</div>
+                                            <div class="col-sm-4">Entregado</div>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" role="progressbar" style="width: 50%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            {% endif %}
+                                            {% if estado == "entregado" %}
+                                            <div class="row">
+                                            <div class="col-sm-4">Preparacion</div>
+                                            <div class="col-sm-4">Reparto</div>
+                                            <div class="col-sm-4">Entregado</div>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            {% endif %}
                                         </div>
-                                        {% if aux.imagen %}
-                                            <img class="card-img-top" src="{{ aux.imagen.url }}" alt="Card image">
-                                            {% else %}
-                                            <img src="{% static 'app/img/stock/stock-juego-1.jpg' %}" alt="">
-                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
-                            {% endfor %}
                         </div>
-                        
                     </div>
+                </div>
+                <div>
+                    <div class="row">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-8">
+                          <div class="card-body">
+                            <h5 class="card-title">Orden despacho: 1111</h5>
+                            <div class="row">
+                              <div class="col-sm-2"><img  src="{{ producto.imagen }}" style="width: 100px;"></div>
+                              <div class="col-sm-2"></div>
+                              <div class="col-sm-5">
+                                <p class="card-text">
+                                 Producto: {{producto.nombre}}
+                                </p>
+                                <p class="text">
+                                    cantidad/es: {{producto.stock}} 
+                                </p>
+                                <p class="text"> Total: ${{producto.precio}}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                 </div>
             </div>
             <div class="col-sm-1 col"></div>
         </div>
     </div>
 </section>
-<section>
-    
-</section>
+{% endif %}
 {% endblock %}

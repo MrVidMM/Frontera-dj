@@ -67,6 +67,9 @@ class Seguimiento(models.Model):
     producto = models.ForeignKey(Producto, on_delete= models.CASCADE)
     estado = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.codigo
+
     class Meta:
         db_table = "db_Seguiento"
 
