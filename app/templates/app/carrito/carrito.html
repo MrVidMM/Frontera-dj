@@ -21,6 +21,7 @@
                                     <p class="card-text">Marca: {{ aux.producto.marca }}</p>
                                     <p class="card-text">Precio: ${{ aux.producto.precio }}</p>
                                     <p class="card-text">Cantidad: {{ aux.cantidad }}</p>
+                                    <a href="{% url 'devolver' aux.producto.codigo %}" class="btn btn-danger">Eliminar producto</a>
                                 </div>
                                 {% if aux.producto.imagen %}
                                     <img class="card-img-top" src="{{ aux.producto.imagen.url }}" alt="Card image">
@@ -114,9 +115,7 @@
                         </div>
                         <form action="" method="POST">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-danger btn-vaciar">Vaciar carrito <i class="fa-solid fa-trash"></i></button>
-                            <a href="{% url 'carrito' user.id %}"></a> <!--No vacia-->
-                            <a href="{% url 'limpiarCarrito' %}">REVISAR REVISAR REVISAR REVISAR</a> <!--Solo vacia si NO esta en un BOTON-->
+                            <!-- antiguo boton vaciar <button type="submit" class="btn btn-danger btn-vaciar"><a href="{% url 'limpiarCarrito' %}" class="text-light" style="text-decoration: none;">Vaciar carrito</a><i class="fa-solid fa-trash"></i></button>-->
                         </form>
                     </div>
                 </div>

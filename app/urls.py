@@ -10,6 +10,7 @@ urlpatterns = [
     path('eliminarSuscripcion/<username>/', eliminarSuscripcion,name="eliminarSuscripcion"),
     path('carrito/<id>/', carrito, name='carrito'),
     path('limpiarCarrito/', limpiarCarrito, name='limpiarCarrito'),
+    path('devolver/<codigo>/',devolver,name="devolver"),
     path('base/', base, name='base'),
     path('base_index/', base_index, name='base_index'),
     path('base_admin/', base_admin, name='base_admin'),

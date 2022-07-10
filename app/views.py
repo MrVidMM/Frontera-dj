@@ -202,6 +202,21 @@ def limpiarCarrito(request):
 
     return render(request, 'app/carrito/carrito.html')
 
+# Devolver producto al stock
+def devolver(request, codigo):
+    carrito = Carrito.objects.get(producto_id=codigo)
+    usuario= str(carrito.usuario)
+    
+
+    producto = Producto.objects.get(codigo=codigo)
+    producto.stock += carrito.cantidad
+    producto.save()
+    
+    carrito.delete()
+
+    return redirect('/carrito/'+usuario)
+
+
 @login_required
 def pagar(request):
     carritoAll = Carrito.objects.all()
