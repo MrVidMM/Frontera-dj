@@ -26,12 +26,14 @@
                                 <div class="carrito-cards d-flex">
                                     <div class="card shadow">
                                         <div class="card-body">
-                                            <h4 class="card-title">{{ aux.codigo_id }}</h4>
-                                            <p class="card-text">{{ aux.codigo_id.codigo_id.nombre }}</p>
-                                            <p class="card-text">Precio: ${{ aux.precio }}</p>
+                                            <h4 class="card-title">{{ aux.producto.nombre }}</h4>
+                                            <p class="card-text">Marca: {{ aux.producto.marca }}</p>
+                                    
+                                            <p class="card-text">Precio: ${{ aux.producto.precio }} x Cantidad: {{ aux.cantidad }}</p>
+                                            <p class="card-text">Estado: {{ aux.estado }}</p>
                                         </div>
-                                        {% if aux.codigo.imagen %}
-                                            <img class="card-img-top" src="{{ aux.codigo.imagen.url }}" alt="Card image">
+                                        {% if aux.producto.imagen %}
+                                            <img class="card-img-top" src="{{ aux.producto.imagen.url }}" alt="Card image">
                                             {% else %}
                                             <img src="{% static 'app/img/stock/stock-juego-1.jpg' %}" alt="">
                                         {% endif %}
@@ -50,7 +52,7 @@
                 <form action="" method="POST">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger btn-vaciar">Vaciar Historial <i class="fa-solid fa-trash"></i></button>
-                    <a href="{% url 'historial' %}"></a>
+                    <a href="{% url 'historial' user.id %}"></a>
                 </form>
             </div>
             <div class="col-lg-4 col-sm-4 "></div>

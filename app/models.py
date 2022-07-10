@@ -66,7 +66,8 @@ class Seguimiento(models.Model):
     cantidad = models.IntegerField()
     producto = models.ForeignKey(Producto, on_delete= models.CASCADE)
     estado = models.CharField(max_length=50)
-
+    imagen = models.ImageField(upload_to="productos", null=True)
+    
     class Meta:
         db_table = "db_Seguiento"
 

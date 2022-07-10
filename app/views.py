@@ -22,16 +22,11 @@ def registrado(request):
     return render(request, 'app/registrado.html')
 
 @login_required
-def historial(request):
-    historiaAll = Historial.objects.all()
-    contador = Historial.objects.count()
-    datos = {
-        'listaHistorial' : historiaAll,
-        'contador' : contador
-    }
-    if request.method == 'POST':
-        historial = Historial.objects.all().delete()
-        return redirect(to='historial')
+def historial(request, id):
+    historialAll = Seguimiento.objects.filter(usuario=id)
+    datos = { 
+        'listaHistorial' : historialAll
+        }
     return render(request, 'app/historial.html', datos)
 
 @login_required
@@ -47,6 +42,7 @@ def seguimiento(request):
     producto = Producto()
     producto.codigo = request.POST.get('codigo')
     producto.nombre = request.POST.get('nombre')
+    producto.imagen = request.POST.get('imagen')
     producto.marca = request.POST.get('marca')
     producto.precio = request.POST.get('precio')
     producto.stock = request.POST.get('stock')
@@ -211,7 +207,6 @@ def devolver(request, codigo):
     carrito = Carrito.objects.get(producto_id=codigo)
     usuario= str(carrito.usuario)
     
-
     producto = Producto.objects.get(codigo=codigo)
     producto.stock += carrito.cantidad
     producto.save()
