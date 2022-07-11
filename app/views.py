@@ -39,16 +39,20 @@ def seguimiento(request):
 
     datos = { }
 
+    if request.method == 'POST':
+
+        producto = Producto()
+        producto.codigo = request.POST.get('codigo')
+        producto.nombre = request.POST.get('nombre')
+        producto.precio = request.POST.get('precio')
+        producto.stock = request.POST.get('stock')
+        producto.marca = request.POST.get('marca')
+        estado = request.POST.get('estado')
+        producto.imagen = request.POST.get('imagen')
+        print(producto)
+        datos['producto']= producto
+        datos['estado'] = estado
     producto = Producto()
-    producto.codigo = request.POST.get('codigo')
-    producto.nombre = request.POST.get('nombre')
-    producto.imagen = request.POST.get('imagen')
-    producto.marca = request.POST.get('marca')
-    producto.precio = request.POST.get('precio')
-    producto.stock = request.POST.get('stock')
-    print(producto)
-    datos['producto']= producto
-    datos['estado'] = estado
 
     return render(request, 'app/seguimiento/seguimiento.html', datos)
 
@@ -67,20 +71,11 @@ def listaSeguimiento(request):
     return render(request, 'app/seguimiento/listaSeguimiento.html', datos)
 
 @login_required
-def modificarSegimiento(request):
-    seguimientoAll = EstadoSeguimiento.objects.get(codigo=codigo)
-    datos = {
-        'form' : SeguimientoForm(instance=seguimientoAll)
-    }
+def eliminar_despacho(request, codigo):
+    seguimiento = Seguimiento.objects.get(codigo=codigo)
+    seguimiento.delete()
 
-    if request.method == 'POST':
-        formulario = SeguimientoForm(request.POST, files=request.FILES, instance=seguimientoAll)
-        if formulario.is_valid():
-            formulario.save()
-            messages.success(request,'Producto guardado correctamente!') #Nuevo 2
-            datos['form'] = formulario
-            
-    return render(request, 'app/seguimiento/modificarSegimiento.html', datos)
+    return redirect(to="listaSeguimiento")
 
 # CRUD CARRITO
 @login_required
