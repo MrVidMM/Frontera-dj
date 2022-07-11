@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as user_login
 from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.models import Group
 from .models import * 
 from .forms import *
 
@@ -331,6 +332,7 @@ def registro(request):
         if formulario.is_valid():
             formulario.save()
             user = authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
+            Group.objects.get(name='Cliente').user_set.add(user)
             user_login(request, user)
             messages.success(request, "Te has registrado correctamente")
             return redirect(to="registrado")
