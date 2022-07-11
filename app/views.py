@@ -22,6 +22,7 @@ def registrado(request):
     return render(request, 'app/registrado.html')
 
 @login_required
+@permission_required('app.view_historial')
 def historial(request, id):
     historialAll = Seguimiento.objects.filter(usuario=id)
     datos = { 
@@ -35,6 +36,7 @@ def perfil(request):
 
 # CRUD SEGUIMIENTO
 @login_required
+@permission_required('app.view_seguimiento')
 def seguimiento(request):
 
     datos = { }
@@ -57,6 +59,8 @@ def seguimiento(request):
     return render(request, 'app/seguimiento/seguimiento.html', datos)
 
 @login_required
+@permission_required('app.change_seguimiento')
+@permission_required('app.delete_seguimiento')
 def listaSeguimiento(request):
     
     if request.method == 'POST':
@@ -73,7 +77,8 @@ def listaSeguimiento(request):
     return render(request, 'app/seguimiento/listaSeguimiento.html', datos)
 
 @login_required
-def eliminarDespacho(request, codigo):
+@permission_required('app.delete_seguimiento')
+def eliminarSeguimiento(request, codigo):
     seguimiento = Seguimiento.objects.get(codigo=codigo)
     seguimiento.delete()
 
@@ -81,6 +86,7 @@ def eliminarDespacho(request, codigo):
 
 # CRUD CARRITO
 @login_required
+@permission_required('app.view_producto')
 def stock(request):
     response = requests.get('http://127.0.0.1:8000/api/producto/').json()
     responseDigi = requests.get('https://digimon-api.vercel.app/api/digimon').json()
@@ -148,7 +154,10 @@ def stock(request):
 
     return render(request, 'app/carrito/stock.html', datos)
 
-@login_required
+
+@permission_required('app.view_carrito')
+@permission_required('app.delete_carrito')
+@permission_required('app.change_carrito')
 def carrito(request, id):
     carritoAll = Carrito.objects.filter(usuario=id)
     contador = Carrito.objects.count()
@@ -199,6 +208,8 @@ def limpiarCarrito(request):
 
     return render(request, 'app/carrito/carrito.html')
 
+@permission_required('app.delete_carrito')
+@permission_required('app.change_carrito')
 # Devolver producto al stock
 def devolver(request, codigo):
     carrito = Carrito.objects.get(producto_id=codigo)
@@ -241,21 +252,26 @@ def pagar(request):
         return render(request, 'app/registrado.html')
     return render(request, 'app/carrito/pagar.html', datos)
 
+@login_required
 def base(request):
     return render(request, 'app/base.html')
 
+@login_required
 def base_index(request):
     return render(request, 'app/base_index.html')
 
+@login_required
 def base_admin(request):
     return render(request, 'app/base_admin.html')
 
-
+@login_required
 def admin(request):
     return render(request, 'app/admin/auth/user/')
 
 # CRUD PRODUCTOS
+@login_required
 @permission_required('app.add_producto')
+@permission_required('app.view_producto')
 def agregarProducto(request):
     datos = {
         'form' : ProductoForm()
@@ -269,7 +285,8 @@ def agregarProducto(request):
             
     return render(request, 'app/productos/agregarProducto.html', datos)
 
-@permission_required('app.update_producto')
+@login_required
+@permission_required('app.change_producto')
 def modificarProducto(request, codigo):
     producto = Producto.objects.get(codigo=codigo)
     datos = {
@@ -285,6 +302,7 @@ def modificarProducto(request, codigo):
             
     return render(request, 'app/productos/modificarProducto.html', datos)
 
+@login_required
 @permission_required('app.view_producto')
 def listarProductos(request):
     productosAll = Producto.objects.all()
@@ -294,6 +312,7 @@ def listarProductos(request):
     
     return render(request, 'app/productos/listarProductos.html', datos)
 
+@login_required
 @permission_required('app.delete_producto')
 def eliminarProducto(request, codigo):
     producto = Producto.objects.get(codigo=codigo)
@@ -324,6 +343,7 @@ def login(request):
 
 # Nuevas APIs
 @login_required
+@permission_required('app.view_producto')
 def stockApi(request):
     response = requests.get('http://127.0.0.1:8000/api/producto/').json()
 
@@ -333,6 +353,7 @@ def stockApi(request):
     return render(request, 'app/carrito/stockApi.html', datos)
 
 @login_required
+@permission_required('app.view_producto')
 def stockGames(request):
     response = requests.get('https://www.freetogame.com/api/games').json()
 
@@ -342,6 +363,7 @@ def stockGames(request):
     return render(request, 'app/carrito/stockGames.html', datos)
 
 @login_required
+@permission_required('app.view_producto')
 def stockDigi(request):
     response = requests.get('https://digimon-api.vercel.app/api/digimon').json()
 
@@ -351,6 +373,7 @@ def stockDigi(request):
     return render(request, 'app/carrito/stockDigi.html', datos)
 
 @login_required
+@permission_required('app.view_producto')
 def stockRM(request):
     response = requests.get('https://rickandmortyapi.com/api/character').json()
 
@@ -381,6 +404,7 @@ def suscripcion(request):
         suscripcion.username = request.POST.get('username')
         suscripcion.suscrito = True
         suscripcion.save()
+        return redirect(to="suscripcion")
     return render(request, 'app/suscripcion/suscripcion.html', datos)
 
 @login_required

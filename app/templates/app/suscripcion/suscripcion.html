@@ -3,54 +3,70 @@
 {% load crispy_forms_tags %}
 {% load humanize %}
 {% block contenido %}
-    <div class="container-fluid">
-        <!--Titulo-->
-        <div class="col-sm-12 col-12">
-            <div class="banner-pago d-flex shadow">
-                <h3>Suscripción</h3>
-            </div>
-        </div>
+<!--Titulo-->
+<div class="col-sm-12 col-12">
+    <div class="banner-pago d-flex shadow">
+        <h3>Suscripción</h3>
     </div>
-    {% if usuario == 1 %}
-    <section class="py-4  osahan-main-body">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <table class="table table-condensed table-hover table-striped table-responsive-sm bg-light border">
-                                <thead>
+</div>
+
+{% if usuario == 0 %}
+<div class="row">
+
+
+    <div class="col-lg-4 col-sm-4 col-4"></div>
+    <div class="col-lg-4 col-sm-4 col-4">
+        <form method="POST" class="text-center bg-dark p-4 text-light rounded-3 mb-4 mt-2 shadow-lg">
+            {% csrf_token %}
+            <table>
+                {{ form | crispy }}
+                
+                <div class="d-grid">
+                    <input type="submit" class="btn btn-success mt-3 mb-3" name="btnEnviar" id="btnEnviar">
+                </div>        
+                
+                
+            </table>
+        </form>
+    </div>
+    <div class="col-lg-4 col-sm-4 col-4"></div>
+</div>    
+
+{% elif usuario == 1 %}
+<section class="py-4  osahan-main-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-condensed table-hover table-striped table-responsive-sm bg-light border text-center ">
+                            <thead>
+                                <tr>
+                                    <th>NOMBRE</th>
+                                    <th>ESTADO SUSCRIPCIÓN</th>
+                                    <th>ELIMINAR SUSCRIPCIÓN</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for aux in listaSuscripcion %}
                                     <tr>
-                                        <th>NOMBRE</th>
-                                        <th>ESTADO SUSCRIPCIÓN</th>
-                                        <th>ELIMINAR SUSCRIPCIÓN</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for aux in listaSuscripcion %}
-                                        <tr>
-                                            <td>{{ aux.username }}</td>
-                                            <td>{{ aux.estado }}</td>
-                                            <td><a href="{% url 'eliminarSuscripcion' aux.username %}" class="btn btn-primary">Eliminar Suscripcion</a></td>
-                                        </tr>
-                                    {% endfor %}
-                                </tbody>
-                                {% elif usuario == 0 %}
-                                <form method="POST">
-                                    {% csrf_token %}
-                                    <table>
-                                        {{ form | crispy }}
+                                        <td>{{ aux.username }}</td>
                                         <td>
-                                            <input type="submit" class="btn btn-success mt-3" name="btnEnviar" id="btnEnviar">
+                                            <label class="btn active">
+                                                <p type="checkbox" class="me-2" name="" id="" checked autocomplete="off" > {{ aux.estado }} Suscrito <i class="fa-solid fa-heart" style="color: red;"></i></p>
+                                            </label>
                                         </td>
-                                    </table>
-                                </form>
-                            </table>
-                        </div>
+                                        <td><a href="{% url 'eliminarSuscripcion' aux.username %}"  class="btn btn-primary">Eliminar Suscripcion</a></td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                            
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    {% endif %}
+    </div>
+</section>
+{% endif %}
 {% endblock %}
