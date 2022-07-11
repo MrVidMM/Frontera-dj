@@ -56,6 +56,9 @@ class Suscripcion(models.Model):
 class Historial(models.Model):
     codigo = models.ForeignKey(Carrito, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.codigo
+
     class Meta:
         db_table = "db_Historial"
 

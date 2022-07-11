@@ -26,11 +26,19 @@
                                 <div class="carrito-cards d-flex">
                                     <div class="card shadow">
                                         <div class="card-body">
-                                            <h4 class="card-title">{{ aux.producto.nombre }}</h4>
-                                            <p class="card-text">Marca: {{ aux.producto.marca }}</p>
-                                    
+                                            <h4 class="card-title">{{ aux.producto.nombre }} | Marca: {{ aux.producto.marca }}</h4>
                                             <p class="card-text">Precio: ${{ aux.producto.precio }} x Cantidad: {{ aux.cantidad }}</p>
                                             <p class="card-text">Estado: {{ aux.estado }}</p>
+                                            <form action="{% url 'seguimiento' %}" method="POST" class="" enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="nombre_producto" id="nombre_producto" value="{{aux.producto.nombre}}">
+                                                <input type="hidden" name="precio_producto" id="precio_producto" value="{{ aux.producto.precio }}">
+                                                <input type="hidden" name="cantidad_producto" id="cantidad_producto" value="{{ aux.cantidad }}">
+                                                <input type="hidden" name="estado_producto" id="estado_producto" value="{{ aux.estado }}">
+                                                <input type="hidden" name="marca_producto" id="marca_producto" value="{{ aux.producto.marca }}">
+                                                <input type="hidden" name="imagen_producto" id="imagen_producto" value="{{aux.producto.imagen.url }}">
+                                                <input type="submit" class="btn btn-success  mt-3" value="Seguimiento">
+                                            </form>
                                         </div>
                                         {% if aux.producto.imagen %}
                                             <img class="card-img-top" src="{{ aux.producto.imagen.url }}" alt="Card image">

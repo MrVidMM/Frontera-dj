@@ -30,4 +30,5 @@ urlpatterns = [
     path("stockRM/", stockRM, name='stockRM'),
     path('advertencia/', advertencia, name='advertencia'),
     path('listaSeguimiento/', listaSeguimiento, name='listaSeguimiento'),
+    path('eliminarDespacho//<codigo>/', eliminarDespacho, name='eliminarDespacho'),
 ]

@@ -42,36 +42,38 @@ def seguimiento(request):
     if request.method == 'POST':
 
         producto = Producto()
-        producto.codigo = request.POST.get('codigo')
-        producto.nombre = request.POST.get('nombre')
-        producto.precio = request.POST.get('precio')
-        producto.stock = request.POST.get('stock')
-        producto.marca = request.POST.get('marca')
-        estado = request.POST.get('estado')
-        producto.imagen = request.POST.get('imagen')
-        print(producto)
+        producto.codigo = request.POST.get('codigo_producto')
+        producto.nombre = request.POST.get('nombre_producto')
+        producto.precio = request.POST.get('precio_producto')
+        producto.stock = request.POST.get('cantidad_producto')
+        producto.marca = request.POST.get('marca_producto')
+        estado = request.POST.get('estado_producto')
+        producto.imagen = request.POST.get('imagen_producto')
+        #print(producto)
         datos['producto']= producto
         datos['estado'] = estado
-    producto = Producto()
+
 
     return render(request, 'app/seguimiento/seguimiento.html', datos)
 
 @login_required
 def listaSeguimiento(request):
+    
     if request.method == 'POST':
-        seguimiento= Seguimiento.objects.get(codigo=request.POST.get('codigo'))
+        seguimiento= Seguimiento.objects.get(codigo=request.POST.get('codigo_producto'))
         seguimiento.estado = request.POST.get('selecciona')
         seguimiento.save()
-
+        
     seguimientoAll = Seguimiento.objects.all()
     datos = {
             'listaSeguimiento' : seguimientoAll,
             'usuario' : 0
     }
+
     return render(request, 'app/seguimiento/listaSeguimiento.html', datos)
 
 @login_required
-def eliminar_despacho(request, codigo):
+def eliminarDespacho(request, codigo):
     seguimiento = Seguimiento.objects.get(codigo=codigo)
     seguimiento.delete()
 
