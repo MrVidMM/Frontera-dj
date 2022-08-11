@@ -30,11 +30,6 @@
                             <label for="name" class="form-label">Dirección:</label>
                                 <p>Avenida Mexico 6285</p>
                         </div>
-                        <div class="mb-5 mt-2">
-                            <i class="fas fa-user"></i>
-                            <label for="name" class="form-label">Pedidos Realizados:</label>
-                                <h3>9</h3>
-                        </div>
                         {% if perms.app.view_suscripcion %}
                         <div class="mb-3 mt-2">
                             <i class="fas fa-user"></i>
@@ -49,17 +44,7 @@
                         </div>
                         <div class="mb-3 mt-2">
                             <div class="d-grid">
-                                <a href="{% url 'seguimiento' %}" class="btn btn-success btn-block">Seguimiento del Pedido</a>
-                            </div>
-                        </div>
-                        <div class="mb-3 mt-2">
-                            <div class="d-grid">
                                 <a href="{% url 'index' %}" class="btn btn-warning btn-block">Cerrar Cuenta</a></li>
-                            </div>
-                        </div>
-                        <div class="mb-3 mt-2">
-                            <div class="d-grid">
-                                <a href="{% url 'suscripcion' %}" class="btn btn-danger btn-block">Suscribirse</a></li>
                             </div>
                         </div>
                     </form>
